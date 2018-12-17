@@ -1,18 +1,61 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home container-fluid">
+    <div class="row logoRow">
+      <div v-if="showLoginForm()" class="col-12">
+        <auth></auth>
+      </div>
+      <div v-else class="col-12">
+        <img src="../assets/flip-logo.png" class="mainLogo">
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <!-- CAROUSEL -->
+        <img src="https://placehold.it/200x150" alt="">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h6>VIEW PUBLIC DECKS</h6>
+      </div>
+      <div class="col-6">
+        <img src="https://placehold.it/100x100" alt="">
+      </div>
+      <div class="col-6">
+        <img src="https://placehold.it/100x100" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  // @ is an alias to /src
+  import auth from '@/components/auth.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'home',
+    components: {
+      auth
+    },
+    computed: {
+      showLoginForm() {
+        return this.$state.showLoginForm
+      }
+    }
   }
-}
 </script>
+
+<style scoped>
+  .mainLogo {
+    width: 80vw;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .container-fluid {
+    min-height: 100vh;
+    background-color: var(--primary);
+    opacity: .7;
+  }
+</style>
