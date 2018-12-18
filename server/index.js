@@ -1,8 +1,18 @@
 var express = require('express')
 var bp = require('body-parser')
 var server = express()
+var cors = require('cors')
 var PORT = process.env.PORT || 3000
 
+var whitelist = ['http://localhost:8080'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+server.use(cors(corsOptions))
 
 //Fire up database connection
 require('./server-assets/db/mlab-config')

@@ -2,11 +2,14 @@
   <div class="auth container-fluid">
     <div class="row">
       <div class="col-12">
+        <!-- login -->
         <form v-if="loginForm" @submit.prevent="loginUser" class="form-group">
           <input type="email" v-model="creds.email" placeholder="email" class="form-control">
           <input type="password" v-model="creds.password" placeholder="password" class="form-control">
           <button type="submit" class="btn btn-secondary">Login</button>
         </form>
+
+        <!-- register -->
         <form v-else @submit.prevent="register" class="form-group">
           <input type="text" v-model="newUser.name" placeholder="name" class="form-control">
           <input type="email" v-model="newUser.email" placeholder="email" class="form-control">
@@ -44,7 +47,8 @@
         // this.$store.dispatch("register", this.newUser);
       },
       loginUser() {
-        // this.$store.dispatch("login", this.creds);
+
+        this.$store.dispatch("login", this.creds);
       }
     }
   };
