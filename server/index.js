@@ -1,7 +1,7 @@
 var express = require('express')
 var bp = require('body-parser')
 var server = express()
-var port = 3000
+var PORT = process.env.PORT || 3000
 
 
 //Fire up database connection
@@ -19,6 +19,8 @@ let auth = require('./server-assets/auth/routes')
 server.use(auth.session)
 server.use(auth.router)
 
+let pubilcDeckRoutes = require('./server-assets/routes/pubicDecks')
+server.use('/api/decks/', pubilcDeckRoutes)
 
 //Gate Keeper Must login to access any route below this code
 server.use((req, res, next) => {
@@ -47,6 +49,6 @@ server.use('*', (req, res, next) => {
 })
 
 
-server.listen(port, () => {
-  console.log('server running on port', port)
+server.listen(PORT, () => {
+  console.log('server running on PORT', PORT)
 })

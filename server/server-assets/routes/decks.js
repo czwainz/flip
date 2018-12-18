@@ -13,6 +13,16 @@ router.get('/', (req, res, next) => {
     })
 })
 
+router.get('/mydecks', (req, res, next) => {
+  Decks.find({ authorId: req.session.uid })
+    .then(decks => {
+      res.send(decks)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
 
 router.get('/:deckId', (req, res, next) => {
   Decks.findById(req.params.deckId)
