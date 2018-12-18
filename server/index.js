@@ -45,7 +45,8 @@ server.use((req, res, next) => {
 //YOUR ROUTES HERE!!!!!!
 let decksRoutes = require('./server-assets/routes/decks')
 server.use('/api/decks/', decksRoutes)
-
+let CardsRoutes = require('./server-assets/routes/cards')
+server.use('/api/cards/', CardsRoutes)
 
 
 
