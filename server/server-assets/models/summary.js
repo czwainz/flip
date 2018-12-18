@@ -7,7 +7,7 @@ let schemaName = 'Summary'
 let schema = new Schema({
   authorId: { type: ObjectId, ref: 'User', required: true },
   deckId: { type: ObjectId, ref: 'Deck', required: true },
-  deckName: { type: String, required: true },
+  deckTitle: { type: String, required: true },
   score: { type: Number, required: true }
 }, { timestamps: true })
 
