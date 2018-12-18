@@ -10,7 +10,7 @@ let auth = axios.create({
 })
 
 let api = axios.create({
-  baseURL: "//localhost:3000/api/decks",
+  baseURL: "//localhost:3000/api",
   withCredentials: true,
   timeout: 3000
 })
@@ -45,17 +45,42 @@ export default new Vuex.Store({
       auth.post('register', newUser)
         .then(res => {
           commit('setUser', res.data)
+          dispatch('getMyDecks')
         })
         .catch(err => console.log('Cannot Register'))
     },
+    authenticate({ commit, dispatch }) {
+      auth.get('authenticate')
+        .then(res => {
+          commit('setUser', res.data)
+          dispatch('getMyDecks')
+        })
+        .catch(err => console.log('Cannot Authenticate'))
+    },
+    logout({ commit, dispatch }) {
+      auth.delete('logout')
+        .then(res => {
+          commit('setUser', {})
+          console.log('user logged out')
+          router.push({ name: 'home' })
+        })
+        .catch(err => console.log('Cannot Logout'))
+    },
     // MY DECKS
     getMyDecks({ commit, dispatch }) {
-      api.get('/mydecks')
+      api.get('/decks/mydecks')
         .then(res => {
           console.log(res.data)
           commit('setMyDecks', res.data)
         })
         .catch(err => console.log('Cannot get mydecks'))
+    },
+    getActiveDeck({ commit, dispatch }, deckId) {
+      api.get('/decks/' + deckId)
+        .then(res => {
+          debugger
+        })
+        .catch(err => console.log('Cannot get deck by ID'))
     }
   }
 

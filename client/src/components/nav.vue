@@ -7,11 +7,15 @@
       <div class="col-6 d-flex justify-content-center">
         <img src="../assets/flip-logo.png" class="logoSize">
       </div>
-      <div class="col-2 d-flex justify-content-end">
+      <div v-if="isLoggedIn()" class="col-2">
+        <p class="my-1" @click="logout">Logout</p>
+      </div>
+      <div v-else class="col-2 d-flex justify-content-end">
         <router-link :to="{name: 'auth'}">
           <p class="my-1">Login</p>
         </router-link>
       </div>
+
     </div>
   </div>
   </div>
@@ -26,9 +30,19 @@
 
       }
     },
-    computed: {},
+    computed: {
+      user() {
+        return this.$store.state.user
+      }
+    },
     methods: {
-      toLogin() {
+      isLoggedIn() {
+        if (this.user._id) {
+          return true
+        } else { return false }
+      },
+      logout() {
+        this.$store.dispatch('logout')
       }
     },
     components: {
