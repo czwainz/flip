@@ -1,18 +1,31 @@
 <template>
   <div class="myDecks container-fluid">
     <h1>MY DECKS YAY!</h1>
+    <div class="row">
+      <div v-for="deck in myDecks" class="col-6 card deck">
+        {{deck.title}}
+        {{deck.description}}
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'myDecks',
+    mounted() {
+    },
     data() {
       return {
 
       }
     },
-    computed: {},
+    computed: {
+      myDecks() {
+        return this.$store.myDecks
+      }
+    },
     methods: {}
   }
 
@@ -23,5 +36,11 @@
     /* min-height: 100vh; */
     background-color: var(--primary);
     opacity: .7;
+  }
+</style>
+
+<style scoped>
+  .deck {
+    background-color: var(--info)
   }
 </style>
