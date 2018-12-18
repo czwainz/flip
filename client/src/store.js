@@ -10,7 +10,7 @@ let auth = axios.create({
 })
 
 let api = axios.create({
-  baseURL: "//localhost:3000/api",
+  baseURL: "//localhost:3000/api/decks",
   withCredentials: true,
   timeout: 3000
 })
@@ -19,11 +19,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    myDecks: []
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setMyDecks(state, myDecks) {
+      state.myDecks = myDecks
     }
   },
   actions: {
@@ -32,6 +36,7 @@ export default new Vuex.Store({
       auth.post('login', creds)
         .then(res => {
           commit('setUser', res.data)
+          dispatch('getMyDecks')
           router.push({ name: "myDecks" })
         })
         .catch(err => console.log("Cannot Login"))
@@ -45,7 +50,12 @@ export default new Vuex.Store({
     },
     // MY DECKS
     getMyDecks({ commit, dispatch }) {
-
+      api.get('/mydecks')
+        .then(res => {
+          console.log(res.data)
+          commit('setMyDecks', res.data)
+        })
+        .catch(err => console.log('Cannot get mydecks'))
     }
   }
 
