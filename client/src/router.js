@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import auth from './views/auth.vue'
+import myDecks from './views/MyDecks.vue'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/auth',
       name: 'auth',
       component: auth
+    },
+    {
+      path: '/myDecks',
+      name: 'myDecks',
+      component: myDecks
     },
     {
       path: '/about',

@@ -14,7 +14,7 @@
           <input type="text" v-model="newUser.name" placeholder="name" class="form-control">
           <input type="email" v-model="newUser.email" placeholder="email" class="form-control">
           <input type="password" v-model="newUser.password" placeholder="password" class="form-control">
-          <button type="submit">Create Account</button>
+          <button type="submit" class="btn btn-secondary">Create Account</button>
         </form>
         <div class="action" @click="loginForm = !loginForm">
           <p v-if="loginForm">No account? Click here to Register</p>
@@ -44,10 +44,11 @@
     },
     methods: {
       register() {
-        // this.$store.dispatch("register", this.newUser);
+        this.$store.dispatch("register", this.newUser);
+
+
       },
       loginUser() {
-
         this.$store.dispatch("login", this.creds);
       }
     }
