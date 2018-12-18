@@ -2,7 +2,7 @@
   <div class="myDecks container-fluid">
     <h1>MY DECKS YAY!</h1>
     <div class="row">
-      <div v-for="deck in myDecks" class="col-6 card deck" @click="goToDeckView">
+      <div v-for="deck in myDecks" class="col-6 card deck" @click="goToDeckView(deck._id)">
         {{deck.title}}<br>
         {{deck.description}}
       </div>
@@ -27,8 +27,9 @@
       }
     },
     methods: {
-      goToDeckView() {
+      goToDeckView(deckId) {
         this.$store.dispatch('getActiveDeck', deckId)
+
       }
     }
   }

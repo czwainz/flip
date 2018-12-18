@@ -20,7 +20,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {},
-    myDecks: []
+    myDecks: [],
+    activeDeck: {}
   },
   mutations: {
     setUser(state, user) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     },
     setMyDecks(state, myDecks) {
       state.myDecks = myDecks
+    },
+    setActiveDeck(state, activeDeck) {
+      state.activeDeck = activeDeck
     }
   },
   actions: {
@@ -46,6 +50,7 @@ export default new Vuex.Store({
         .then(res => {
           commit('setUser', res.data)
           dispatch('getMyDecks')
+          router.push({ name: "myDecks" })
         })
         .catch(err => console.log('Cannot Register'))
     },
@@ -54,6 +59,7 @@ export default new Vuex.Store({
         .then(res => {
           commit('setUser', res.data)
           dispatch('getMyDecks')
+          router.push({ name: "myDecks" })
         })
         .catch(err => console.log('Cannot Authenticate'))
     },
@@ -70,7 +76,6 @@ export default new Vuex.Store({
     getMyDecks({ commit, dispatch }) {
       api.get('/decks/mydecks')
         .then(res => {
-          console.log(res.data)
           commit('setMyDecks', res.data)
         })
         .catch(err => console.log('Cannot get mydecks'))
@@ -78,7 +83,9 @@ export default new Vuex.Store({
     getActiveDeck({ commit, dispatch }, deckId) {
       api.get('/decks/' + deckId)
         .then(res => {
-          debugger
+          console.log('active Deck: ', res.data)
+          commit('setActiveDeck', res.data)
+          router.push({ name: 'deck', params: { deckId: deckId } })
         })
         .catch(err => console.log('Cannot get deck by ID'))
     }
