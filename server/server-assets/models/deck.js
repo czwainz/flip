@@ -14,7 +14,8 @@ let schema = new Schema({
   public: { type: Boolean, required: true, default: true },
   tags: { type: String, required: true },
   color: { type: String, required: true },
-  review: { type: Number }
+  review: { type: Number },
+  cards: []
 }, { timestamps: true })
 
 

@@ -58,6 +58,17 @@ router.put('/:id', (req, res, next) => {
 })
 
 
+//DELETE
+router.delete('/:id', (req, res, next) => {
+  Cards.findById(req.params.id)
+    .then(card => {
+      if (!card.authorId.equals(req.session.uid)) {
+        return res.status(401).send("ACCESS DENIED!")
+      }
+      card.remove()
+      res.send({ message: "Belorted" })
+    })
+})
 
 
 
