@@ -1,5 +1,6 @@
 let router = require('express').Router()
 let Decks = require('../models/deck')
+let Cards = require('../models/card')
 
 //GET
 router.get('/', (req, res, next) => {
@@ -24,16 +25,6 @@ router.get('/mydecks', (req, res, next) => {
     })
 })
 
-router.get('/:deckId', (req, res, next) => {
-  Decks.findById(req.params.deckId)
-    .then(deck => {
-      res.send(deck)
-    })
-    .catch(err => {
-      console.log(err)
-      next()
-    })
-})
 
 //POST
 router.post('/', (req, res, next) => {
