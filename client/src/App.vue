@@ -28,14 +28,24 @@
 
   #nav {
     padding: 30px;
+    color: white;
   }
 
   #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--warning);
   }
 
   #nav a.router-link-exact-active {
-    color: #42b983;
+    color: var(--secondary);
+    text-decoration: none;
+  }
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
   }
 </style>
