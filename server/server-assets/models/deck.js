@@ -10,7 +10,8 @@ let schema = new Schema({
   authorId: { type: ObjectId, ref: 'User', required: true },
   public: { type: Boolean, required: true, default: true },
   tags: { type: String, required: true },
-  color: { type: String, required: true }
+  color: { type: String, required: true },
+  review: { type: Number }
 }, { timestamps: true })
 
 

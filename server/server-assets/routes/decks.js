@@ -72,5 +72,17 @@ router.put('/:deckId', (req, res, next) => {
 })
 
 //DELETE
+router.delete('/:id', (req, res, next) => {
+  Decks.findById(req.params.id)
+    .then(deck => {
+      if (!deck.authorId.equals(req.session.uid)) {
+        return res.status(401).send("ACCESS DENIED!")
+      }
+      deck.remove()
+      res.send({ message: "Belorted" })
+    })
+})
+
+
 
 module.exports = router
