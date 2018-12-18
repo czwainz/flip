@@ -18,6 +18,18 @@ router.get('/:deckId', (req, res, next) => {
     })
 })
 
+router.get('/', (req, res, next) => {
+  // @ts-ignore
+  Summarys.find({ authorId: req.session.uid })
+    .then(summarys => {
+      res.send(summarys)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
 
 //POST
 router.post('/', (req, res, next) => {
@@ -48,7 +60,7 @@ router.put('/:id', (req, res, next) => {
           next()
           return
         }
-        res.send("Successfully Updated")
+        res.send("Successfully Updated Summary")
       });
     })
     .catch(err => {

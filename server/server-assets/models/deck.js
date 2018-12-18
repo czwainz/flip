@@ -24,7 +24,7 @@ schema.pre('remove', function (next) {
   // @ts-ignore
   Promise.all([
     Cards.deleteMany({ deckId: this._id }),
-    Summarys.deleteMany({ deckId: this.id })
+    Summarys.deleteMany({ deckId: this._id })
   ])
     .then(() => next())
     .catch(err => next(err))
