@@ -5,7 +5,7 @@ let schemaName = 'Card'
 
 
 let schema = new Schema({
-  title: { type: String, required: true },
+  title: { type: String },
   authorId: { type: ObjectId, ref: 'User', required: true },
   deckId: { type: ObjectId, ref: 'Deck', required: true },
   front: { type: String, required: true },
