@@ -1,10 +1,7 @@
 <template>
   <div class="home container-fluid">
     <div class="row logoRow">
-      <div v-if="showLoginForm()" class="col-12">
-        <auth></auth>
-      </div>
-      <div v-else class="col-12">
+      <div class="col-12">
         <img src="../assets/flip-logo.png" class="mainLogo">
       </div>
     </div>
@@ -30,17 +27,13 @@
 
 <script>
   // @ is an alias to /src
-  import auth from '@/components/auth.vue'
 
   export default {
     name: 'home',
     components: {
-      auth
     },
     computed: {
-      showLoginForm() {
-        return this.$state.showLoginForm
-      }
+
     }
   }
 </script>

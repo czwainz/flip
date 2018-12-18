@@ -8,7 +8,9 @@
         <img src="../assets/flip-logo.png" class="logoSize">
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <button @click="drawLogin" class="btn btn-secondary">Login</button>
+        <router-link :to="{name: 'auth'}">
+          <p class="my-1">Login</p>
+        </router-link>
       </div>
     </div>
   </div>
@@ -26,8 +28,7 @@
     },
     computed: {},
     methods: {
-      drawLogin() {
-
+      toLogin() {
       }
     },
     components: {
