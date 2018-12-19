@@ -8,15 +8,15 @@
 
     <div class="row">
       <div class="col-12">
-        <form>
+        <form @submit.prevent="editDeck">
           <div class="form-group">
             <label for="deckTitle">Deck Title</label>
-            <input type="text" class="form-control" placeholder="Deck Title" name="deckTitle" :v-model="deck.title">
-            <p>{{deck.title}}</p>
+            <input type="text" class="form-control" placeholder="Deck Title" name="deckTitle" v-model="editedDeck.title">
             <label for="deckDescription">Deck Description</label>
-            <input type="text" class="form-control" placeholder="Deck Description" name="deckDescription" :v-model="deck.description">
+            <input type="text" class="form-control" placeholder="Deck Description" name="deckDescription" v-model="editedDeck.description">
             <label for="deckTags">Deck Tags</label>
-            <input type="text" class="form-control" placeholder="Deck Tags" name="deckTags" :v-model="deck.tags">
+            <input type="text" class="form-control" placeholder="Deck Tags" name="deckTags" v-model="editedDeck.tags">
+            <p>{{editedDeck.tags}}</p>
 
             <div class="form-check form-check-inline">
               <label class="form-check-label">
@@ -59,7 +59,10 @@
       return {
         checked: '',
         editedDeck: {
-          title: ''
+          title: '',
+          description: '',
+          tags: '',
+          color: ''
         }
       }
     },
@@ -68,7 +71,16 @@
         return this.$store.state.activeDeck
       }
     },
-    methods: {},
+    methods: {
+      editDeck() {
+        debugger
+        let payload = {
+          deck: this.editedDeck,
+          deckId: this.deck._id
+        }
+        this.$store.dispatch('editDeck', payload)
+      }
+    },
     mounted() {
       console.log(this.$store.state.activeDeck)
     }

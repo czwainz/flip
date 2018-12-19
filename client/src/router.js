@@ -4,7 +4,6 @@ import Home from './views/Home.vue'
 import auth from './views/auth.vue'
 import myDecks from './views/MyDecks.vue'
 import deck from './views/Deck.vue'
-import editDeck from './views/EditDeck.vue'
 
 Vue.use(Router)
 
@@ -31,12 +30,12 @@ export default new Router({
       component: deck,
       props: true
     },
-    {
-      path: '/editDeck/:deckId',
-      name: 'editDeck',
-      component: editDeck,
-      props: true
-    },
+    // {
+    //   path: '/editDeck/:deckId',
+    //   name: 'editDeck',
+    //   component: editDeck,
+    //   props: true
+    // },
     {
       path: '/about',
       name: 'about',

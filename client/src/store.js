@@ -93,6 +93,13 @@ export default new Vuex.Store({
         })
         .catch(err => console.log('Cannot get deck by ID'))
     },
+    editDeck({ commit, dispatch }, payload) {
+      api.put('/decks/' + payload.deckId, payload.deck)
+        .then(res => {
+          debugger
+        })
+        .catch(err => console.log('Cannot edit deck'))
+    },
     //GET PUBLIC DECK
     getpublicDecks({ commit, dispatch }) {
       api.get('/decks/public')

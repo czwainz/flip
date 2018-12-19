@@ -20,29 +20,30 @@
     </div>
     <!-- V-If(view deck/cards)---------- -->
     <!-- new stuff -->
-    <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
-    <!-- new stuff -->
-    <div v-for="card in deck.cards" class="row my-1 mx-1 d-flex justify-content-around">
-      <div class="card col-6">{{card.front}}</div>
-      <div class="card col-6">{{card.back}}</div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <p>Edit deck</p>
-      </div>
-      <div class="col-6">
-        <router-link :to="{name: 'editDeck', params: {deckId: this.deck._id}}">
-          <button class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
-        </router-link>
-      </div>
-    </div>
-    <!-- V-ELSE (edit  deck/cards) -->
-  </div>
+    <div v-if="!isEditingDeck">
 
+      <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+      <div class="row">
+        <div class="col-6">
+          <p>Edit deck</p>
+        </div>
+        <div class="col-6">
+          <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- new stuff -->
+    <!-- V-ELSE (edit  deck/cards) -->
+    <div v-else>
+      <editDeck></editDeck>
+    </div>
+  </div>
 </template>
 
 <script>
   import cardComp from '@/components/card.vue'
+  import editDeck from '@/views/EditDeck.vue'
+
   export default {
     name: 'deck',
     mounted() {
@@ -50,7 +51,7 @@
     },
     data() {
       return {
-
+        isEditingDeck: false
       }
     },
     computed: {
@@ -60,7 +61,8 @@
     },
     methods: {},
     components: {
-      cardComp
+      cardComp,
+      editDeck
     }
   }
 
