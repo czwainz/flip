@@ -1,8 +1,8 @@
 let router = require('express').Router()
 let Decks = require('../models/deck')
-let Cards = require('../models/card')
 
 //GET
+// @ts-ignore
 router.get('/', (req, res, next) => {
   Decks.find({})
     .then(decks => {
@@ -15,6 +15,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/mydecks', (req, res, next) => {
+  // @ts-ignore
   Decks.find({ authorId: req.session.uid })
     .then(decks => {
       res.send(decks)
@@ -44,6 +45,7 @@ router.post('/', (req, res, next) => {
 router.put('/:deckId', (req, res, next) => {
   Decks.findById(req.params.deckId)
     .then(deck => {
+      // @ts-ignore
       if (!deck.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
@@ -63,9 +65,11 @@ router.put('/:deckId', (req, res, next) => {
 })
 
 //DELETE
+// @ts-ignore
 router.delete('/:id', (req, res, next) => {
   Decks.findById(req.params.id)
     .then(deck => {
+      // @ts-ignore
       if (!deck.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }

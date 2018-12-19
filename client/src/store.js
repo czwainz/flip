@@ -113,11 +113,19 @@ export default new Vuex.Store({
           commit('setActiveDeck', res.data)
           router.push({ name: 'editDeck', params: { deckId: res.data._id } })
         })
-    }
+    },
     //DECKS -- PUBLIC
 
     //STUDY VIEW
-
+    getStudyView({ commit }, deckId) {
+      api.get('/decks/' + deckId)
+        .then(res => {
+          console.log('active Deck: ', res.data)
+          commit('setActiveDeck', res.data)
+          router.push({ name: 'study', params: { deckId: deckId } })
+        })
+        .catch(err => console.log('Cannot get deck by ID'))
+    }
 
   }
 

@@ -17,8 +17,8 @@
       </div>
     </div>
     <div class="row d-flex justify-content-around">
-      <div v-for="deck in decks" class="col-5 card border border-white bg-warning">
-        <div class="d-flex align-items-center card-body">
+      <div @click="goToStudy(deck._id)" v-for="deck in decks" class="col-5 card home-card border border-white bg-warning">
+        <div class="d-flex justify-content-center align-items-center card-body">
           {{deck.title}}
         </div>
       </div>
@@ -44,6 +44,11 @@
       decks() {
         return this.$store.state.publicDecks
       }
+    },
+    methods: {
+      goToStudy(deckId) {
+        this.$store.dispatch('getStudyView', deckId)
+      }
     }
   }
 </script>
@@ -62,7 +67,7 @@
     opacity: .7;
   }
 
-  .card {
+  .home-card {
     height: 5rem;
     font-size: 25px;
     border-width: 3px !important;

@@ -53,7 +53,7 @@
 
 <style>
   .logoSize {
-    height: 2rem;
+    height: 6vh;
     width: auto;
     margin-top: .5rem;
     margin-bottom: .5rem;

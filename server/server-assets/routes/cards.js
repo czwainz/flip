@@ -62,6 +62,7 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   Cards.findById(req.params.id)
     .then(card => {
+      // @ts-ignore
       if (!card.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }

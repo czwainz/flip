@@ -1,10 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// @ts-ignore
 import Home from './views/Home.vue'
+// @ts-ignore
 import auth from './views/auth.vue'
+// @ts-ignore
 import myDecks from './views/MyDecks.vue'
+// @ts-ignore
 import deck from './views/Deck.vue'
+// @ts-ignore
 import editDeck from './views/EditDeck.vue'
+// @ts-ignore
+import Study from './views/Study.vue'
 
 Vue.use(Router)
 
@@ -32,6 +39,12 @@ export default new Router({
       props: true
     },
     {
+      path: '/deck/:deckId',
+      name: 'study',
+      component: Study,
+      props: true
+    },
+    {
       path: '/editDeck/:deckId',
       name: 'editDeck',
       component: editDeck,
@@ -44,6 +57,7 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: function () {
+        // @ts-ignore
         return import(/* webpackChunkName: "about" */ './views/About.vue')
       }
     }
