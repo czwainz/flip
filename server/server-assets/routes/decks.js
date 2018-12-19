@@ -55,7 +55,9 @@ router.put('/:deckId', (req, res, next) => {
           next()
           return
         }
-        res.send("Deck Successfully Updated")
+        Decks.findById(req.params.deckId).then(deck => {
+          res.send({ message: "Deck Successfully Updated", deck })
+        })
       });
     })
     .catch(err => {
