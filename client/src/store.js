@@ -96,6 +96,7 @@ export default new Vuex.Store({
     editDeck({ commit, dispatch }, payload) {
       api.put('/decks/' + payload.deckId, payload.deck)
         .then(res => {
+          console.log("updated deck", res.data)
           debugger
           // get data back from api
         })
