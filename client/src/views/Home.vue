@@ -15,11 +15,12 @@
       <div class="col-12">
         <h6>VIEW PUBLIC DECKS</h6>
       </div>
-      <div class="col-6">
-        <img src="https://placehold.it/100x100" alt="">
-      </div>
-      <div class="col-6">
-        <img src="https://placehold.it/100x100" alt="">
+    </div>
+    <div class="row d-flex justify-content-around">
+      <div v-for="deck in decks" class="col-5 card border border-white bg-warning">
+        <div class="d-flex align-items-center card-body">
+          {{deck.title}}
+        </div>
       </div>
     </div>
   </div>
@@ -30,10 +31,19 @@
 
   export default {
     name: 'home',
+    data() {
+      return {
+      }
+    },
+    mounted() {
+      this.$store.dispatch('getpublicDecks')
+    },
     components: {
     },
     computed: {
-
+      decks() {
+        return this.$store.state.publicDecks
+      }
     }
   }
 </script>
@@ -50,5 +60,11 @@
     min-height: 100vh;
     background-color: var(--primary);
     opacity: .7;
+  }
+
+  .card {
+    height: 5rem;
+    font-size: 25px;
+    border-width: 3px !important;
   }
 </style>

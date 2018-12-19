@@ -21,7 +21,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     myDecks: [],
-    activeDeck: {}
+    activeDeck: {},
+    publicDecks: []
   },
   mutations: {
     setUser(state, user) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     setActiveDeck(state, activeDeck) {
       state.activeDeck = activeDeck
+    },
+    setPublicDecks(state, publicDecks) {
+      state.publicDecks = publicDecks
     }
   },
   actions: {
@@ -88,6 +92,14 @@ export default new Vuex.Store({
           router.push({ name: 'deck', params: { deckId: deckId } })
         })
         .catch(err => console.log('Cannot get deck by ID'))
+    },
+    //GET PUBLIC DECK
+    getpublicDecks({ commit, dispatch }) {
+      api.get('/decks/public')
+        .then(res => {
+          commit("setPublicDecks", res.data)
+        })
+        .catch(err => console.log('Cannot get public decks'))
     }
   }
 
