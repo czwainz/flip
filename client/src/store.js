@@ -97,8 +97,8 @@ export default new Vuex.Store({
       api.put('/decks/' + payload.deckId, payload.deck)
         .then(res => {
           console.log("updated deck", res.data)
-          debugger
           // get data back from api
+          commit('setActiveDeck', res.data.deck)
         })
         .catch(err => console.log('Cannot edit deck'))
     },

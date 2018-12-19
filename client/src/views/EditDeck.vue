@@ -52,8 +52,15 @@
               <button type="button" @click="editedDeck.color = 'white'" class=" btn btn-white">&nbsp;</button>
             </div>
           </div>
-
           <!-- Color Change -->
+
+          <!-- card component -->
+          <div class="col-12">
+            <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+            <cardForm v-show="showCardForm"></cardForm>
+            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle btn-xl"><i class="fas fa-2x fa-plus"></i></button>
+          </div>
+          <!-- card component -->
 
           <button type="submit" class="btn btn-warning">Submit Form</button>
         </form>
@@ -70,6 +77,9 @@
 </template>
 
 <script>
+  import cardComp from "@/components/card.vue"
+  import cardForm from "@/components/cardForm.vue"
+
   export default {
     name: 'editDeck',
     data() {
@@ -80,7 +90,8 @@
           description: '',
           tags: '',
           color: ''
-        }
+        },
+        showCardForm: true
       }
     },
     computed: {
@@ -111,12 +122,22 @@
     },
     mounted() {
       console.log(this.$store.state.activeDeck)
+    },
+    components: {
+      cardComp,
+      cardForm
     }
   }
 
 </script>
 
 <style>
-
-
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    /* padding: 10px 16px; */
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1.33;
+  }
 </style>

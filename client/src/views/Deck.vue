@@ -23,6 +23,7 @@
           <p>title: {{deck.title}}</p>
           <p>desc: {{deck.description}}</p>
           <p>tags: {{deck.tags}}</p>
+          <p>color: {{deck.color}}</p>
         </div>
       </div>
       <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
