@@ -7,6 +7,11 @@
         {{deck.description}}
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <button @click="addDeck" class="btn btn-secondary btn-circle"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -30,6 +35,9 @@
       goToDeckView(deckId) {
         this.$store.dispatch('getActiveDeck', deckId)
 
+      },
+      addDeck() {
+        this.$store.dispatch('addDeck')
       }
     }
   }
