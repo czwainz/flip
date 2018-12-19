@@ -1,10 +1,6 @@
 <template>
   <div class="deck container-fluid">
-    <div class="row">
-      <div class="col-12 mt-4">
-        <h1>THIS MY DECK</h1>
-      </div>
-    </div>
+    <!-- Breadcrumbs -->
     <div class="row">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -18,10 +14,17 @@
         </ol>
       </nav>
     </div>
+    <!-- Breadcrumbs -->
     <!-- V-If(view deck/cards)---------- -->
-    <!-- new stuff -->
     <div v-if="!isEditingDeck">
-
+      <div class="row">
+        <div class="col-12 mt-4">
+          <h1>THIS MY DECK</h1>
+          <p>title: {{deck.title}}</p>
+          <p>desc: {{deck.description}}</p>
+          <p>tags: {{deck.tags}}</p>
+        </div>
+      </div>
       <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
       <div class="row">
         <div class="col-6">
@@ -32,10 +35,9 @@
         </div>
       </div>
     </div>
-    <!-- new stuff -->
     <!-- V-ELSE (edit  deck/cards) -->
     <div v-else>
-      <editDeck></editDeck>
+      <editDeck v-on:finishedEditing="isEditingDeck = false"></editDeck>
     </div>
   </div>
 </template>
