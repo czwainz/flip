@@ -1,10 +1,6 @@
 <template>
   <div class="deck container-fluid">
-    <div class="row">
-      <div class="col-12 mt-4">
-        <h1>THIS MY DECK</h1>
-      </div>
-    </div>
+    <!-- Breadcrumbs -->
     <div class="row">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -18,27 +14,38 @@
         </ol>
       </nav>
     </div>
+    <!-- Breadcrumbs -->
     <!-- V-If(view deck/cards)---------- -->
-    <div v-for="card in deck.cards" class="row my-1 mx-1 d-flex justify-content-around">
-      <div class="card col-6">{{card.front}}</div>
-      <div class="card col-6">{{card.back}}</div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <p>Edit deck</p>
+    <div v-if="!isEditingDeck">
+      <div class="row">
+        <div class="col-12 mt-4">
+          <h1>THIS MY DECK</h1>
+          <p>title: {{deck.title}}</p>
+          <p>desc: {{deck.description}}</p>
+          <p>tags: {{deck.tags}}</p>
+        </div>
       </div>
-      <div class="col-6">
-        <router-link :to="{name: 'editDeck', params: {deckId: this.deck._id}}">
-          <button class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
-        </router-link>
+      <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+      <div class="row">
+        <div class="col-6">
+          <p>Edit deck</p>
+        </div>
+        <div class="col-6">
+          <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
+        </div>
       </div>
     </div>
     <!-- V-ELSE (edit  deck/cards) -->
+    <div v-else>
+      <editDeck v-on:finishedEditing="isEditingDeck = false"></editDeck>
+    </div>
   </div>
-
 </template>
 
 <script>
+  import cardComp from '@/components/card.vue'
+  import editDeck from '@/views/EditDeck.vue'
+
   export default {
     name: 'deck',
     mounted() {
@@ -46,7 +53,7 @@
     },
     data() {
       return {
-
+        isEditingDeck: false
       }
     },
     computed: {
@@ -54,7 +61,11 @@
         return this.$store.state.activeDeck
       }
     },
-    methods: {}
+    methods: {},
+    components: {
+      cardComp,
+      editDeck
+    }
   }
 
 </script>
