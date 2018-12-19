@@ -8,13 +8,10 @@ import auth from './views/auth.vue'
 import myDecks from './views/MyDecks.vue'
 // @ts-ignore
 import deck from './views/Deck.vue'
-<<<<<<< HEAD
 // @ts-ignore
-import editDeck from './views/EditDeck.vue'
+// import editDeck from './views/EditDeck.vue'
 // @ts-ignore
 import Study from './views/Study.vue'
-=======
->>>>>>> 7fd24add80ab18ceeaa7a5c31c4ac808280d49ee
 
 Vue.use(Router)
 
