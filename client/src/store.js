@@ -100,7 +100,25 @@ export default new Vuex.Store({
           commit("setPublicDecks", res.data)
         })
         .catch(err => console.log('Cannot get public decks'))
+    },
+    addDeck({ commit, dispatch }) {
+      let blankDeck = {
+        title: 'New Deck Title',
+        description: 'New Deck Description',
+        tags: ' ',
+        color: '#FFFFFF'
+      }
+      api.post('/decks', blankDeck)
+        .then(res => {
+          commit('setActiveDeck', res.data)
+          router.push({ name: 'editDeck', params: { deckId: res.data._id } })
+        })
     }
+    //DECKS -- PUBLIC
+
+    //STUDY VIEW
+
+
   }
 
 })

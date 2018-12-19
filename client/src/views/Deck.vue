@@ -18,6 +18,7 @@
         </ol>
       </nav>
     </div>
+    <!-- V-If(view deck/cards)---------- -->
     <div v-for="card in deck.cards" class="row my-1 mx-1 d-flex justify-content-around">
       <div class="card col-6">{{card.front}}</div>
       <div class="card col-6">{{card.back}}</div>
@@ -32,8 +33,9 @@
         </router-link>
       </div>
     </div>
+    <!-- V-ELSE (edit  deck/cards) -->
   </div>
-  </div>
+
 </template>
 
 <script>
