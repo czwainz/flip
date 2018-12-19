@@ -19,6 +19,9 @@
       </nav>
     </div>
     <!-- V-If(view deck/cards)---------- -->
+    <!-- new stuff -->
+    <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+    <!-- new stuff -->
     <div v-for="card in deck.cards" class="row my-1 mx-1 d-flex justify-content-around">
       <div class="card col-6">{{card.front}}</div>
       <div class="card col-6">{{card.back}}</div>
@@ -39,6 +42,7 @@
 </template>
 
 <script>
+  import cardComp from '@/components/card.vue'
   export default {
     name: 'deck',
     mounted() {
@@ -54,7 +58,10 @@
         return this.$store.state.activeDeck
       }
     },
-    methods: {}
+    methods: {},
+    components: {
+      cardComp
+    }
   }
 
 </script>
