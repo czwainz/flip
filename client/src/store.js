@@ -72,7 +72,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log('Cannot Logout'))
     },
-    // MY DECKS
+    // MY DECKS -- EDIT
     getMyDecks({ commit, dispatch }) {
       api.get('/decks/mydecks')
         .then(res => {
@@ -88,7 +88,12 @@ export default new Vuex.Store({
           router.push({ name: 'deck', params: { deckId: deckId } })
         })
         .catch(err => console.log('Cannot get deck by ID'))
-    }
+    },
+    //DECKS -- PUBLIC
+
+    //STUDY VIEW
+
+
   }
 
 })
