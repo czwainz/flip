@@ -70,7 +70,7 @@
 
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-danger my-1">Delete Deck</button>
+        <button @click="deleteDeck" class="btn btn-danger my-1">Delete Deck</button>
       </div>
     </div>
   </div>
@@ -118,6 +118,9 @@
         }
         this.$store.dispatch('editDeck', payload)
         this.$emit('finishedEditing')
+      },
+      deleteDeck() {
+        this.$store.dispatch('deleteDeck', this.deck._id)
       }
     },
     mounted() {
