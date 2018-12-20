@@ -44,7 +44,6 @@
         this.$store.dispatch('getStudyView', this.activeDeck._id)
       },
       goHome() {
-        if
       }
     }
   }
