@@ -13,10 +13,10 @@
     </div>
     <div class="row">
       <div class="col-12" v-if="isLoggedIn">
-
         <router-link :to="{name: 'myDecks'}"><button class="btn btn-white my-1" style="color: var(--gray-dark);">My
             Decks</button></router-link>
       </div>
+      <div class="col-12" v-else></div>
       <div class="col-12">
         <h4>PUBLIC DECKS</h4>
       </div>
@@ -38,10 +38,12 @@
     name: 'home',
     data() {
       return {
+        isLoggedIn: false
       }
     },
     mounted() {
       this.$store.dispatch('getpublicDecks')
+      this.checkLogin()
     },
     components: {
     },
@@ -54,10 +56,10 @@
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
       },
-      isLoggedIn() {
+      checkLogin() {
         if (this.$store.state.user._id) {
-          return true
-        } return false
+          this.isLoggedIn = true
+        }
       }
     }
   }
