@@ -44,25 +44,25 @@
           <!-- Color Change -->
           <div class="col-12">
             <div class="btn-group mr-2 mb-1" role="group" aria-label="First group">
-              <button type="button" @click="editedDeck.color = 'secondary'" class="btn btn-secondary">&nbsp;</button>
-              <button type="button" @click="editedDeck.color = 'danger'" class=" btn btn-danger">&nbsp;</button>
-              <button type="button" @click="editedDeck.color = 'warning'" class=" btn btn-warning">&nbsp;</button>
-              <button type="button" @click="editedDeck.color = 'success'" class=" btn btn-success">&nbsp;</button>
-              <button type="button" @click="editedDeck.color = 'info'" class=" btn btn-info">&nbsp;</button>
-              <button type="button" @click="editedDeck.color = 'white'" class=" btn btn-white">&nbsp;</button>
+              <button type="button" @click="editedDeck.color = 'secondary'" class="btn btn-secondary">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'danger'" class=" btn btn-danger">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'warning'" class=" btn btn-warning">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'success'" class=" btn btn-success">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'info'" class=" btn btn-info">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'white'" class=" btn btn-white">&emsp;</button>
             </div>
           </div>
           <!-- Color Change -->
 
           <!-- card component -->
           <div class="col-12">
-            <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle mb-1"><i class="fas fa-1x fa-plus"></i></button>
             <cardForm v-show="showCardForm"></cardForm>
-            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle btn-xl"><i class="fas fa-2x fa-plus"></i></button>
+            <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
           </div>
           <!-- card component -->
 
-          <button type="submit" class="btn btn-warning">Submit Form</button>
+          <button type="submit" class="btn btn-warning"><i class="far fa-save"></i></button>
         </form>
 
       </div>
@@ -91,7 +91,7 @@
           tags: '',
           color: ''
         },
-        showCardForm: true
+        showCardForm: false
       }
     },
     computed: {

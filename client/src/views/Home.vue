@@ -64,7 +64,7 @@
   .container-fluid {
     min-height: 100vh;
     background-color: var(--primary);
-    opacity: .7;
+    /* opacity: .7; */
   }
 
   .home-card {
