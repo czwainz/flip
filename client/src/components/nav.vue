@@ -1,18 +1,18 @@
 <template>
   <div class="navBar container-fluid">
-    <div class="row d-flex justify-content-around bg-primary">
+    <div class="row d-flex justify-content-around bg-primary align-items-center">
       <div class="col-2 justify-content-start align-self-center">
         <i class="fas fa-bars"></i>
       </div>
       <div class="col-6 d-flex justify-content-center">
         <img src="../assets/flip-logo.png" class="logoSize">
       </div>
-      <div v-if="isLoggedIn()" class="col-2">
-        <button class="btn btn-outline-light" @click="logout">Logout</button>
+      <div v-if="isLoggedIn()" class="col-2 d-flex justify-content-end">
+        <button class="btn btn-outline-light btn-sm" @click="logout">Logout</button>
       </div>
       <div v-else class="col-2 d-flex justify-content-end">
         <router-link :to="{name: 'auth'}">
-          <button class="btn btn-outline-light">Login</button>
+          <button class="btn btn-outline-light btn-sm">Login</button>
         </router-link>
       </div>
 
@@ -57,5 +57,10 @@
     width: auto;
     margin-top: .5rem;
     margin-bottom: .5rem;
+  }
+
+  .btn-sm {
+    height: 25px;
+    font-size: 10px;
   }
 </style>

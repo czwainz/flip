@@ -47,8 +47,6 @@ let decksRoutes = require('./server-assets/routes/decks')
 server.use('/api/decks/', decksRoutes)
 let CardsRoutes = require('./server-assets/routes/cards')
 server.use('/api/cards/', CardsRoutes)
-let SummarysRoutes = require('./server-assets/routes/summarys')
-server.use('/api/summarys/', SummarysRoutes)
 
 
 
