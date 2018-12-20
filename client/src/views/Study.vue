@@ -24,9 +24,8 @@
         </div>
       </div>
       <div v-else>
-        <h3>
-          This deck has no cards
-        </h3>
+        <h3 class="mt-5"> This deck has no cards!</h3>
+        <i class="far fa-7x fa-grimace mt-2" style="color: #5a5a5a;"></i>
       </div>
     </div>
   </div>
