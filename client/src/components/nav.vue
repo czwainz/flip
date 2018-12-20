@@ -5,7 +5,7 @@
         <i class="fas fa-bars"></i>
       </div>
       <div class="col-6 d-flex justify-content-center">
-        <img src="../assets/flip-logo.png" class="logoSize">
+        <router-link :to="{name: 'home'}"><img src="../assets/flip-logo.png" class="logoSize"></router-link>
       </div>
       <div v-if="isLoggedIn()" class="col-2 d-flex justify-content-end">
         <button class="btn btn-outline-light btn-sm" @click="logout">Logout</button>
