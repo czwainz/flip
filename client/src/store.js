@@ -175,11 +175,8 @@ export default new Vuex.Store({
       router.push({ name: 'summary' })
     },
     postSummary({ commit }, summary) {
-      api.post('/summarys/', summary)
-        .then(res => {
-          // commit('setSummary', summary)
-          // router.push({ name: 'summary' })
-        })
+      api.put('/decks/' + summary.deckId, summary)
+        .then(res => { })
     },
     // goToLandingPage({ commit }) {
     //   router.push({ name: 'home' })

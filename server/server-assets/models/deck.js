@@ -4,7 +4,6 @@ let ObjectId = Schema.Types.ObjectId
 let schemaName = 'Deck'
 
 let Cards = require('./card')
-let Summarys = require('./summary')
 
 
 let schema = new Schema({
@@ -15,7 +14,8 @@ let schema = new Schema({
   tags: { type: String, required: true },
   color: { type: String, required: true },
   review: { type: Number },
-  cards: []
+  cards: [],
+  score: { type: Number }
 }, { timestamps: true })
 
 
@@ -23,8 +23,7 @@ schema.pre('remove', function (next) {
   //find all the cards and summarys and remove them
   // @ts-ignore
   Promise.all([
-    Cards.deleteMany({ deckId: this._id }),
-    Summarys.deleteMany({ deckId: this._id })
+    Cards.deleteMany({ deckId: this._id })
   ])
     .then(() => next())
     .catch(err => next(err))
