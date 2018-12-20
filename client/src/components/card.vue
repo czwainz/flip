@@ -33,7 +33,7 @@
 </script>
 <style>
   .cardComp {
-    display: inline-flex;
+    /* display: inline-flex; */
     flex-direction: row;
   }
 

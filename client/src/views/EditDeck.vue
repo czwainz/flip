@@ -121,7 +121,7 @@
       }
     },
     mounted() {
-      console.log(this.$store.state.activeDeck)
+      // console.log(this.$store.state.activeDeck)
     },
     components: {
       cardComp,

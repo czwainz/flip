@@ -1,7 +1,19 @@
 <template>
   <div class="myDecks container-fluid">
-    <h1>MY DECKS YAY!</h1>
     <div class="row">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <router-link :to="{name: 'home'}">Home</router-link>
+          </li>
+          <li class="breadcrumb-item">
+            <router-link :to="{name: 'myDecks'}">My Decks</router-link>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <h1>MY DECKS YAY!</h1>
       <div v-for="deck in myDecks" class="col-6 card deck" @click="goToDeckView(deck._id)">
         {{deck.title}}<br>
         {{deck.description}}

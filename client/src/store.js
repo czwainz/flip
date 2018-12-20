@@ -90,7 +90,6 @@ export default new Vuex.Store({
     getActiveDeck({ commit, dispatch }, deckId) {
       api.get('/decks/' + deckId)
         .then(res => {
-          console.log('active Deck: ', res.data)
           commit('setActiveDeck', res.data)
           router.push({ name: 'deck', params: { deckId: deckId } })
         })
@@ -99,16 +98,13 @@ export default new Vuex.Store({
     editDeck({ commit, dispatch }, payload) {
       api.put('/decks/' + payload.deckId, payload.deck)
         .then(res => {
-          console.log("updated deck", res.data)
-          // get data back from api
-          commit('setActiveDeck', res.data.deck)
+          dispatch('getActiveDeck', payload.deckId)
         })
         .catch(err => console.log('Cannot edit deck'))
     },
     addCard({ commit, dispatch }, payload) {
       api.post('/cards/', payload)
         .then(res => {
-          console.log('new card', res.data)
           commit('addCardToDeck', res.data)
         })
         .catch(err => console.log('Cannot add new card'))

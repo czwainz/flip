@@ -16,12 +16,11 @@
     </div>
     <!-- Breadcrumbs -->
     <!-- V-If(view deck/cards)---------- -->
-    <div v-if="!isEditingDeck">
+    <div v-show="!isEditingDeck">
       <div class="row">
         <div class="col-12 mt-4">
-          <h1>THIS MY DECK</h1>
-          <p><strong>Title:</strong> {{deck.title}}<br>
-            <strong>Desc:</strong> {{deck.description}}<br>
+          <h1>{{deck.title}}</h1>
+          <p><strong>Description:</strong> {{deck.description}}<br>
             <strong>Tags:</strong> {{deck.tags}}<br>
             <strong>Color:</strong> {{deck.color}}</p>
         </div>
@@ -37,7 +36,7 @@
       </div>
     </div>
     <!-- V-ELSE (edit  deck/cards) -->
-    <div v-else>
+    <div v-show="isEditingDeck">
       <editDeck v-on:finishedEditing="isEditingDeck = false"></editDeck>
     </div>
   </div>
