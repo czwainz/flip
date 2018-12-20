@@ -6,15 +6,19 @@
           <div class="flip-card-front justify-content-center d-flex">
             <!-- Front of Card -->
             <div class="card study ">
-              <h1 class="card-info"> {{activeDeck.cards[0].front}} </h1>
+              <h1 class="card-info card-body h-100 d-flex align-items-center justify-content-center">
+                {{activeDeck.cards[(deckPosition)].front}} </h1>
             </div>
           </div>
           <div class="flip-card-back justify-content-center d-flex">
             <!-- Back of Card -->
-            <div class="card study ">
-              <h1 class="card-info"> {{activeDeck.cards[0].back}} </h1>
-              <i class="fas fa-times-circle"></i>
-              <i class="fas fa-check-circle"></i>
+            <div class="card study d-flex align-middle">
+              <h1 v-if="back" class="card-info card-body h-100 d-flex align-items-center justify-content-center">
+                {{activeDeck.cards[(deckPosition)].back}} </h1>
+              <div v-if="back" class="card-button card-footer d-flex justify-content-around">
+                <i class="fas fa-times-circle x-and-check" @click="markWrong()"></i>
+                <i class="fas fa-check-circle x-and-check" @click="markRight()"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -28,7 +32,14 @@
     name: 'study',
     data() {
       return {
-        back: false
+        back: false,
+        deckPosition: 0,
+        summaryResults: {
+          deckId: "",
+          wrong: [],
+          right: [],
+          score: 0
+        }
       }
     },
     computed: {
@@ -36,7 +47,26 @@
         return this.$store.state.activeDeck
       }
     },
-    methods: {}
+    methods: {
+      markWrong() {
+        // this.$store.dispatch('sendWrong', this)
+        this.summaryResults.wrong.push(this.activeDeck.cards[this.deckPosition])
+        this.nextCard()
+      },
+      markRight() {
+        this.summaryResults.right.push(this.activeDeck.cards[this.deckPosition])
+        this.nextCard()
+      },
+      nextCard() {
+        if (this.activeDeck.cards.length > this.deckPosition + 1) {
+          this.deckPosition++
+        } else {
+          this.summaryResults.score = Math.round((this.summaryResults.right.length / this.activeDeck.cards.length) * 100)
+          this.summaryResults.deckId = this.activeDeck._id
+          this.$store.dispatch('goToSummary', summaryResults)
+        }
+      }
+    }
   }
 
 </script>
@@ -52,10 +82,15 @@
     height: 94vh;
   }
 
-  .card-info {
+  /* .card-info {
     display: table-cell;
     vertical-align: middle;
   }
+
+  .card-button {
+    display: table-cell;
+    vertical-align: middle;
+  } */
 
   .card-study {
     height: 100vh;
@@ -66,6 +101,7 @@
     height: 100%;
     perspective: 1000px;
   }
+
 
   .flip-card-inner {
     transition: transform 1.5s;
@@ -92,5 +128,9 @@
     /* background-color: #2980b9; */
     transform: rotateY(180deg);
     z-index: 1;
+  }
+
+  .x-and-check {
+    font-size: 30px;
   }
 </style>
