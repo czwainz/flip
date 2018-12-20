@@ -5,14 +5,14 @@
         <div :class="{'transition-flip': back}" class="flip-card-inner">
           <div class="flip-card-front justify-content-center d-flex">
             <!-- Front of Card -->
-            <div class="card study ">
+            <div class="card shadow study ">
               <h1 class="card-info card-body h-100 d-flex align-items-center justify-content-center">
                 {{activeDeck.cards[(deckPosition)].front}} </h1>
             </div>
           </div>
           <div class="flip-card-back justify-content-center d-flex">
             <!-- Back of Card -->
-            <div class="card study d-flex align-middle">
+            <div class="card shadow study d-flex align-middle">
               <h1 v-if="back" class="card-info card-body h-100 d-flex align-items-center justify-content-center">
                 {{activeDeck.cards[(deckPosition)].back}} </h1>
               <div v-if="back" class="card-button card-footer d-flex justify-content-around">
