@@ -13,16 +13,18 @@
     </div>
     <div class="row">
       <div class="col-12" v-if="isLoggedIn">
-        <router-link :to="{name: 'myDecks'}">My Decks</router-link>
+
+        <router-link :to="{name: 'myDecks'}"><button class="btn btn-white my-1" style="color: var(--gray-dark);">My
+            Decks</button></router-link>
       </div>
       <div class="col-12">
-        <h6>VIEW PUBLIC DECKS</h6>
+        <h4>PUBLIC DECKS</h4>
       </div>
     </div>
     <div class="row d-flex justify-content-around">
-      <div @click="goToStudy(deck._id)" v-for="deck in decks" class="col-5 card home-card border border-white bg-warning">
+      <div @click="goToStudy(deck._id)" v-for="deck in decks" class="col-5 card home-card border border-white bg-warning my-2">
         <div class="d-flex justify-content-center align-items-center card-body">
-          {{deck.title}}
+          <h5>{{deck.title}}</h5>
         </div>
       </div>
     </div>
@@ -72,12 +74,11 @@
   .container-fluid {
     min-height: 100vh;
     background-color: var(--primary);
-    /* opacity: .7; */
   }
 
   .home-card {
     height: 5rem;
-    font-size: 25px;
     border-width: 3px !important;
+    overflow: hidden;
   }
 </style>

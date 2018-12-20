@@ -19,19 +19,20 @@
     <div v-show="!isEditingDeck">
       <div class="row">
         <div class="col-12 mt-4">
-          <h1>{{deck.title}}</h1>
+          <h3>{{deck.title}}</h3>
           <p><strong>Description:</strong> {{deck.description}}<br>
-            <strong>Tags:</strong> {{deck.tags}}<br>
-            <strong>Color:</strong> {{deck.color}}</p>
+            <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
       <div class="row">
         <div class="col-6">
-          <p>Edit deck</p>
+          <button @click="goStudy" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
+          <p>Play</p>
         </div>
         <div class="col-6">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
+          <p>Edit</p>
         </div>
       </div>
     </div>
@@ -61,7 +62,11 @@
         return this.$store.state.activeDeck
       }
     },
-    methods: {},
+    methods: {
+      goStudy() {
+        this.$store.dispatch('getStudyView', this.deck._id)
+      }
+    },
     components: {
       cardComp,
       editDeck
@@ -80,4 +85,10 @@
     font-size: 12px;
     line-height: 1.42857;
   }
+</style>
+
+<style scoped>
+  /* .btn-circle-outline-white {
+    border: 1px solid white;
+  } */
 </style>
