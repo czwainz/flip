@@ -39,7 +39,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/deck/:deckId',
+      path: '/study/:deckId',
       name: 'study',
       component: Study,
       props: true

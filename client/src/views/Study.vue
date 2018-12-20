@@ -13,6 +13,8 @@
             <!-- Back of Card -->
             <div class="card study ">
               <h1 class="card-info"> {{activeDeck.cards[0].back}} </h1>
+              <i class="fas fa-times-circle"></i>
+              <i class="fas fa-check-circle"></i>
             </div>
           </div>
         </div>
