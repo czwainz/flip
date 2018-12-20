@@ -22,7 +22,8 @@ export default new Vuex.Store({
     user: {},
     myDecks: [],
     activeDeck: {},
-    publicDecks: []
+    publicDecks: [],
+    summary: {}
   },
   mutations: {
     setUser(state, user) {
@@ -39,6 +40,10 @@ export default new Vuex.Store({
     },
     addCardToDeck(state, card) {
       state.activeDeck.cards.push(card)
+    },
+    setSummary(state, summary) {
+      state.summary = summary
+      console.log(state.summary)
     }
   },
   actions: {
@@ -151,6 +156,13 @@ export default new Vuex.Store({
           router.push({ name: 'study', params: { deckId: deckId } })
         })
         .catch(err => console.log('Cannot get deck by ID'))
+    },
+    goToSummary({ commit }, summary) {
+      api.post('/summarys/', summary)
+        .then(res => {
+          commit('setSummary', summary)
+          router.push({ name: 'summary' })
+        })
     }
 
   }

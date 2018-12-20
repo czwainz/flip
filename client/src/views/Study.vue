@@ -38,7 +38,8 @@
           deckId: "",
           wrong: [],
           right: [],
-          score: 0
+          score: 0,
+          deckTitle: ""
         }
       }
     },
@@ -63,7 +64,8 @@
         } else {
           this.summaryResults.score = Math.round((this.summaryResults.right.length / this.activeDeck.cards.length) * 100)
           this.summaryResults.deckId = this.activeDeck._id
-          this.$store.dispatch('goToSummary', summaryResults)
+          this.summaryResults.deckTitle = this.activeDeck.title
+          this.$store.dispatch('goToSummary', this.summaryResults)
         }
       }
     }

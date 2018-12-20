@@ -8,11 +8,11 @@
         <img src="../assets/flip-logo.png" class="logoSize">
       </div>
       <div v-if="isLoggedIn()" class="col-2">
-        <p class="my-1" @click="logout">Logout</p>
+        <button class="btn btn-outline-light" @click="logout">Logout</button>
       </div>
       <div v-else class="col-2 d-flex justify-content-end">
         <router-link :to="{name: 'auth'}">
-          <p class="my-1">Login</p>
+          <button class="btn btn-outline-light">Login</button>
         </router-link>
       </div>
 

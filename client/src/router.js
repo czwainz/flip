@@ -12,6 +12,8 @@ import deck from './views/Deck.vue'
 // import editDeck from './views/EditDeck.vue'
 // @ts-ignore
 import Study from './views/Study.vue'
+// @ts-ignore
+import summary from './views/Summary.vue'
 
 Vue.use(Router)
 
@@ -42,6 +44,12 @@ export default new Router({
       path: '/study/:deckId',
       name: 'study',
       component: Study,
+      props: true
+    },
+    {
+      path: '/summary/:deckId',
+      name: 'summary',
+      component: summary,
       props: true
     },
     // {
