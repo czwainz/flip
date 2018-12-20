@@ -36,6 +36,8 @@
           back: this.cardBack
         }
         this.$store.dispatch('addCard', payload)
+        this.cardFront = ''
+        this.cardBack = ''
       }
     }
   }

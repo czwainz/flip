@@ -67,14 +67,14 @@
     /* background-color: var(--primary); */
     /* opacity: .7; */
   }
+
+  .btn-circle-outline {
+    border: 1px solid grey;
+  }
 </style>
 
 <style scoped>
   /* .deck {
     background-color: var(--info)
   } */
-
-  .btn-circle-outline {
-    border: 1px solid grey;
-  }
 </style>
