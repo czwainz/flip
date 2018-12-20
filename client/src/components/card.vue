@@ -9,9 +9,9 @@
     <form v-show="showForm" @submit.prevent="editCard">
       <div class="form-group">
         <label for="editFront">Front</label>
-        <input class="form-control" name="editFront">
+        <input class="form-control" name="editFront" v-model="editedCard.front">
         <label for="editBack">Back</label>
-        <input class="form-control" name="editBack">
+        <input class="form-control" name="editBack" v-model="editedCard.back">
       </div>
       <button type="submit" class="btn btn-secondary my-1">Complete</button>
     </form>
@@ -23,7 +23,11 @@
     name: 'cardComp',
     data() {
       return {
-        showForm: false
+        showForm: false,
+        editedCard: {
+          front: '',
+          back: ''
+        }
       }
     },
     computed: {},
@@ -36,7 +40,18 @@
         this.$store.dispatch('removeCard', payload)
       },
       editCard() {
-
+        let payload = {
+          deckId: this.cardData.deckId,
+          cardId: this.cardData._id
+        }
+        for (let prop in this.editedCard) {
+          if (this.editedCard[prop]) {
+            payload[prop] = this.editedCard[prop]
+          }
+        }
+        debugger
+        this.$store.dispatch('editCard', payload)
+        this.showForm = false
       }
     },
     props: ['cardData', 'isEditing']

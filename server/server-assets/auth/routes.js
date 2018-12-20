@@ -17,12 +17,12 @@ router.post('/auth/register', (req, res) => {
   }
   //CHANGE THE PASSWORD TO A HASHED PASSWORD
   // @ts-ignore
-  req.body.password = Users.generateHash(req.body.password)
+  req.body.hash = Users.generateHash(req.body.password)
   //CREATE THE USER
   Users.create(req.body)
     .then(user => {
       //REMOVE THE PASSWORD BEFORE RETURNING
-      delete user._doc.password
+      delete user._doc.hash
       //SET THE SESSION UID (SHORT FOR USERID)
       req.session.uid = user._id
       res.send(user)
@@ -42,7 +42,9 @@ router.post('/auth/login', (req, res) => {
         return res.status(400).send(loginError)
       }
       //CHECK THE PASSWORD
-      if (!user.validatePassword(req.body.password)) {
+      let valid = user.validatePassword(req.body.password)
+      console.log(valid)
+      if (!valid) {
         return res.status(400).send(loginError)
       }
       //ALWAYS REMOVE THE PASSWORD FROM THE USER OBJECT

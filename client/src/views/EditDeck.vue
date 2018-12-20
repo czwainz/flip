@@ -16,8 +16,6 @@
             <input type="text" class="form-control" placeholder="Deck Description" name="deckDescription" v-model="editedDeck.description">
             <label for="deckTags">Current Deck Tags: {{deck.tags}}</label>
             <input type="text" class="form-control" placeholder="Deck Tags" name="deckTags" v-model="editedDeck.tags">
-            <label for="deckColor">Current Color: {{deck.color}}</label>
-            <input type="text" class="form-control" placeholder="Hexcode" name="deckColor" v-model="editedDeck.color">
 
             <!-- radio button -->
             <div class="form-check form-check-inline">

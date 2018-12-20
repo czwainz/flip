@@ -132,9 +132,9 @@ export default new Vuex.Store({
         })
     },
     editCard({ commit, dispatch }, payload) {
-      api.put('/cards/' + payload.cardId)
+      api.put('/cards/' + payload.cardId, payload)
         .then(res => {
-          debugger
+          dispatch('getActiveDeck', payload.deckId)
         })
     },
     //GET PUBLIC DECK
