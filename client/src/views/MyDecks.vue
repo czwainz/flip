@@ -47,8 +47,8 @@
 <style>
   .container-fluid {
     /* min-height: 100vh; */
-    background-color: var(--primary);
-    opacity: .7;
+    /* background-color: var(--primary); */
+    /* opacity: .7; */
   }
 </style>
 

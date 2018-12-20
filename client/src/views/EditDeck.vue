@@ -56,8 +56,8 @@
 
           <!-- card component -->
           <div class="col-12">
-            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle mb-1"><i class="fas fa-1x fa-plus"></i></button>
-            <cardForm v-show="showCardForm"></cardForm>
+            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle my-1"><i class="fas fa-1x fa-plus"></i></button>
+            <cardForm :deckId="deck._id" v-show="showCardForm"></cardForm>
             <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
           </div>
           <!-- card component -->
@@ -131,7 +131,7 @@
 
 </script>
 
-<style>
+<style scoped>
   .btn-circle.btn-xl {
     width: 70px;
     height: 70px;
@@ -140,4 +140,8 @@
     font-size: 24px;
     line-height: 1.33;
   }
+
+  /* .form-group {
+    color: whitesmoke;
+  } */
 </style>
