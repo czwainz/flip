@@ -1,15 +1,31 @@
 <template>
   <div class="myDecks container-fluid">
-    <h1>MY DECKS YAY!</h1>
     <div class="row">
-      <div v-for="deck in myDecks" class="col-6 card deck" @click="goToDeckView(deck._id)">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <router-link :to="{name: 'home'}">Home</router-link>
+          </li>
+          <li class="breadcrumb-item">
+            <router-link :to="{name: 'myDecks'}">My Decks</router-link>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h4><strong>My Study Decks</strong></h4>
+      </div>
+      <div v-for="deck in myDecks" class="col-6 card deck my-1" @click="goToDeckView(deck._id)" :class="deck.color">
+        <!--  -->
+        <!-- v-bind:style="{'background-color': 'var(--info)'}" -->
         {{deck.title}}<br>
         {{deck.description}}
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <button @click="addDeck" class="btn btn-secondary btn-circle"><i class="fas fa-plus"></i></button>
+        <button @click="addDeck" class="btn btn-secondary btn-circle btn-circle-outline"><i class="fas fa-plus"></i></button>
       </div>
     </div>
 
@@ -38,6 +54,7 @@
       },
       addDeck() {
         this.$store.dispatch('addDeck')
+
       }
     }
   }
@@ -53,7 +70,11 @@
 </style>
 
 <style scoped>
-  .deck {
+  /* .deck {
     background-color: var(--info)
+  } */
+
+  .btn-circle-outline {
+    border: 1px solid grey;
   }
 </style>

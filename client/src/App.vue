@@ -48,4 +48,28 @@
   a:hover {
     color: white;
   }
+
+  .white {
+    background-color: var(--white)
+  }
+
+  .info {
+    background-color: var(--info)
+  }
+
+  .danger {
+    background-color: var(--danger)
+  }
+
+  .warning {
+    background-color: var(--warning)
+  }
+
+  .secondary {
+    background-color: var(--secondary)
+  }
+
+  .success {
+    background-color: var(--success)
+  }
 </style>

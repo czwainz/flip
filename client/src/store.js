@@ -92,10 +92,16 @@ export default new Vuex.Store({
         })
         .catch(err => console.log('Cannot get mydecks'))
     },
+    deleteDeck({ commit, dispatch }, deckId) {
+      api.delete('/decks/' + deckId)
+        .then(res => {
+          dispatch('getMyDecks')
+          router.push({ name: 'myDecks' })
+        })
+    },
     getActiveDeck({ commit, dispatch }, deckId) {
       api.get('/decks/' + deckId)
         .then(res => {
-          console.log('active Deck: ', res.data)
           commit('setActiveDeck', res.data)
           router.push({ name: 'deck', params: { deckId: deckId } })
         })
@@ -104,16 +110,15 @@ export default new Vuex.Store({
     editDeck({ commit, dispatch }, payload) {
       api.put('/decks/' + payload.deckId, payload.deck)
         .then(res => {
-          console.log("updated deck", res.data)
-          // get data back from api
-          commit('setActiveDeck', res.data.deck)
+          dispatch('getActiveDeck', payload.deckId)
+          dispatch('getMyDecks')
         })
         .catch(err => console.log('Cannot edit deck'))
     },
+    //CARD STUFF
     addCard({ commit, dispatch }, payload) {
       api.post('/cards/', payload)
         .then(res => {
-          console.log('new card', res.data)
           commit('addCardToDeck', res.data)
         })
         .catch(err => console.log('Cannot add new card'))
@@ -122,6 +127,12 @@ export default new Vuex.Store({
       api.delete('/cards/' + payload.cardId)
         .then(res => {
           dispatch('getActiveDeck', payload.deckId)
+        })
+    },
+    editCard({ commit, dispatch }, payload) {
+      api.put('/cards/' + payload.cardId)
+        .then(res => {
+          debugger
         })
     },
     //GET PUBLIC DECK
@@ -142,7 +153,7 @@ export default new Vuex.Store({
       api.post('/decks', blankDeck)
         .then(res => {
           commit('setActiveDeck', res.data)
-          router.push({ name: 'editDeck', params: { deckId: res.data._id } })
+          router.push({ name: 'deck', params: { deckId: res.data._id } })
         })
     },
     //DECKS -- PUBLIC

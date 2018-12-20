@@ -12,6 +12,9 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-12" v-if="isLoggedIn">
+        <router-link :to="{name: 'myDecks'}">My Decks</router-link>
+      </div>
       <div class="col-12">
         <h6>VIEW PUBLIC DECKS</h6>
       </div>
@@ -48,6 +51,11 @@
     methods: {
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
+      },
+      isLoggedIn() {
+        if (this.$store.state.user._id) {
+          return true
+        } return false
       }
     }
   }
