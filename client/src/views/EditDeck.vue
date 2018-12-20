@@ -58,7 +58,7 @@
           <div class="col-12">
             <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle my-1"><i class="fas fa-1x fa-plus"></i></button>
             <cardForm :deckId="deck._id" v-show="showCardForm"></cardForm>
-            <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+            <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="true"></cardComp>
           </div>
           <!-- card component -->
 

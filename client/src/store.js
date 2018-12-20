@@ -113,6 +113,12 @@ export default new Vuex.Store({
         })
         .catch(err => console.log('Cannot add new card'))
     },
+    removeCard({ commit, dispatch }, payload) {
+      api.delete('/cards/' + payload.cardId)
+        .then(res => {
+          dispatch('getActiveDeck', payload.deckId)
+        })
+    },
     //GET PUBLIC DECK
     getpublicDecks({ commit, dispatch }) {
       api.get('/decks/public')
