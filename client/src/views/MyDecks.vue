@@ -16,7 +16,7 @@
       <div class="col-12">
         <h4><strong>My Study Decks</strong></h4>
       </div>
-      <div v-for="deck in myDecks" class="col-6 card deck my-1" @click="goToDeckView(deck._id)" :class="deck.color">
+      <div v-for="deck in myDecks" class="col-6 card deck my-1 shadow" @click="goToDeckView(deck._id)" :class="deck.color">
         <!--  -->
         <!-- v-bind:style="{'background-color': 'var(--info)'}" -->
         {{deck.title}}<br>
