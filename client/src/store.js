@@ -43,7 +43,6 @@ export default new Vuex.Store({
     },
     setSummary(state, summary) {
       state.summary = summary
-      console.log(state.summary)
     }
   },
   actions: {
@@ -73,7 +72,10 @@ export default new Vuex.Store({
           dispatch('getMyDecks')
           router.push({ name: "myDecks" })
         })
-        .catch(err => console.log('Cannot Authenticate'))
+        .catch(err => {
+          console.log('Cannot Authenticate')
+          router.push({ name: 'home' })
+        })
     },
     logout({ commit, dispatch }) {
       auth.delete('logout')
@@ -169,12 +171,19 @@ export default new Vuex.Store({
         .catch(err => console.log('Cannot get deck by ID'))
     },
     goToSummary({ commit }, summary) {
+      commit('setSummary', summary)
+      router.push({ name: 'summary' })
+    },
+    postSummary({ commit }, summary) {
       api.post('/summarys/', summary)
         .then(res => {
-          commit('setSummary', summary)
-          router.push({ name: 'summary' })
+          // commit('setSummary', summary)
+          // router.push({ name: 'summary' })
         })
-    }
+    },
+    // goToLandingPage({ commit }) {
+    //   router.push({ name: 'home' })
+    // }
 
   }
 

@@ -41,9 +41,16 @@
     },
     methods: {
       playAgain() {
+        if (this.$store.state.user._id == this.activeDeck.authorId) {
+          this.$store.dispatch('postSummary')
+        }
         this.$store.dispatch('getStudyView', this.activeDeck._id)
       },
       goHome() {
+        if (this.$store.state.user._id == this.activeDeck.authorId) {
+          this.$store.dispatch('postSummary')
+        }
+        this.$store.dispatch('authenticate')
       }
     }
   }
