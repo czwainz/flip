@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row studyRow justify-content-center d-flex">
-      <div @click="back = !back" class="flip-card ">
+      <div v-if="hasCards" @click="back = !back" class="flip-card ">
         <div :class="{'transition-flip': back}" class="flip-card-inner">
           <div class="flip-card-front justify-content-center d-flex">
             <!-- Front of Card -->
@@ -23,6 +23,11 @@
           </div>
         </div>
       </div>
+      <div v-else>
+        <h3>
+          This deck has no cards
+        </h3>
+      </div>
     </div>
   </div>
 </template>
@@ -40,12 +45,20 @@
           right: [],
           score: 0,
           deckTitle: ""
-        }
+        },
+        hasCards: null
       }
     },
     computed: {
       activeDeck() {
         return this.$store.state.activeDeck
+      }
+    },
+    mounted() {
+      if (this.$store.state.activeDeck.cards.length > 0) {
+        this.hasCards = true
+      } else {
+        this.hasCards = false
       }
     },
     methods: {
