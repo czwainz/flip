@@ -26,7 +26,7 @@
             <strong>Color:</strong> {{deck.color}}</p>
         </div>
       </div>
-      <cardComp v-for="card in deck.cards" :cardData="card"></cardComp>
+      <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
       <div class="row">
         <div class="col-6">
           <p>Edit deck</p>

@@ -36,6 +36,9 @@ export default new Vuex.Store({
     },
     setPublicDecks(state, publicDecks) {
       state.publicDecks = publicDecks
+    },
+    addCardToDeck(state, card) {
+      state.activeDeck.cards.push(card)
     }
   },
   actions: {
@@ -101,6 +104,20 @@ export default new Vuex.Store({
           commit('setActiveDeck', res.data.deck)
         })
         .catch(err => console.log('Cannot edit deck'))
+    },
+    addCard({ commit, dispatch }, payload) {
+      api.post('/cards/', payload)
+        .then(res => {
+          console.log('new card', res.data)
+          commit('addCardToDeck', res.data)
+        })
+        .catch(err => console.log('Cannot add new card'))
+    },
+    removeCard({ commit, dispatch }, payload) {
+      api.delete('/cards/' + payload.cardId)
+        .then(res => {
+          dispatch('getActiveDeck', payload.deckId)
+        })
     },
     //GET PUBLIC DECK
     getpublicDecks({ commit, dispatch }) {
