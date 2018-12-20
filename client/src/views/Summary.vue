@@ -5,7 +5,7 @@
         <button class="btn btn-danger" @click="playAgain()">Play Again!</button>
         <button class="btn btn-dark" @click="goHome()">Home</button>
       </div>
-      <div class="card w-75 mt-3 mb-3">
+      <div class="card shadow w-75 mt-3 mb-3">
         <div class="card-header">
           <h6>{{activeDeck.title}}</h6>
           <h3>{{decksummary.score}}%</h3>
@@ -42,13 +42,13 @@
     methods: {
       playAgain() {
         if (this.$store.state.user._id == this.activeDeck.authorId) {
-          this.$store.dispatch('postSummary')
+          this.$store.dispatch('postSummary', this.decksummary)
         }
         this.$store.dispatch('getStudyView', this.activeDeck._id)
       },
       goHome() {
         if (this.$store.state.user._id == this.activeDeck.authorId) {
-          this.$store.dispatch('postSummary')
+          this.$store.dispatch('postSummary', this.decksummary)
         }
         this.$store.dispatch('authenticate')
       }
