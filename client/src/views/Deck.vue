@@ -1,5 +1,5 @@
 <template>
-  <div class="deck container-fluid">
+  <div class="deck container-fluid background">
     <!-- Breadcrumbs -->
     <div class="row">
       <nav aria-label="breadcrumb">

@@ -1,5 +1,5 @@
 <template>
-  <div class="home container-fluid">
+  <div class="home container-fluid background">
     <div class="row logoRow">
       <div class="col-12">
         <img src="../assets/flip-logo.png" class="mainLogo">
@@ -12,7 +12,7 @@
     </div>  -->
     <div class="row">
       <div class="col-12" v-if="isLoggedIn">
-        <router-link :to="{name: 'myDecks'}"><button class="btn btn-white my-1" style="color: var(--gray-dark);">My
+        <router-link :to="{name: 'myDecks'}"><button class="btn btn-white my-1 shadow" style="color: var(--gray-dark);">My
             Decks</button></router-link>
       </div>
       <div class="col-12" v-else></div>
