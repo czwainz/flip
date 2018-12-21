@@ -54,8 +54,15 @@
       }
     },
     mounted() {
-      if (this.$store.state.activeDeck.cards.length > 0) {
+      let cards = this.$store.state.activeDeck.cards
+      if (cards.length > 0) {
         this.hasCards = true
+        let numCards = cards.length
+        let count = 0
+        for (let i = cards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
       } else {
         this.hasCards = false
       }
