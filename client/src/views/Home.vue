@@ -25,7 +25,7 @@
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h5>{{deck.title}}</h5>
         </div>
-        <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt">
+        <button @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id">Play Rev</button>
       </div>
     </div>
   </div>
