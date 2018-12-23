@@ -21,10 +21,11 @@
       </div>
     </div>
     <div class="row d-flex justify-content-around">
-      <div @click="goToStudy(deck._id)" v-for="deck in decks" class="col-5 card home-card border border-white bg-warning my-2 shadow">
-        <div class="d-flex justify-content-center align-items-center card-body">
+      <div v-for="deck in decks" class="col-5 card home-card border border-white bg-warning my-2 shadow">
+        <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h5>{{deck.title}}</h5>
         </div>
+        <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt">
       </div>
     </div>
   </div>
@@ -54,6 +55,9 @@
     methods: {
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
+      },
+      reverseStudy(deckId) {
+        this.$store.dispatch('getStudyViewReverse', deckId)
       },
       checkLogin() {
         if (this.$store.state.user._id) {
