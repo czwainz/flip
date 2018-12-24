@@ -170,6 +170,22 @@ export default new Vuex.Store({
         })
         .catch(err => console.log('Cannot get deck by ID'))
     },
+    getStudyViewReverse({ commit }, deckId) {
+      api.get('/decks/' + deckId)
+        .then(res => {
+          console.log('active Deck Reversed: ', res.data)
+          let deck = res.data
+          for (let i = 0; i < deck.cards.length; i++) {
+            let front = deck.cards[i].back;
+            let back = deck.cards[i].front;
+            deck.cards[i].back = back;
+            deck.cards[i].front = front;
+          }
+          commit('setActiveDeck', deck)
+          router.push({ name: 'study', params: { deckId: deckId } })
+        })
+        .catch(err => console.log('Cannot get deck by ID'))
+    },
     goToSummary({ commit }, summary) {
       commit('setSummary', summary)
       router.push({ name: 'summary' })

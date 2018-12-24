@@ -1,24 +1,65 @@
 <template>
   <div class="navBar container-fluid">
-    <div class="row d-flex justify-content-around bg-primary align-items-center">
-      <div class="col-2 justify-content-start align-self-center">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="col-6 d-flex justify-content-center">
+    <!--Navbar-->
+    <nav class="navbar navbar-light light-blue lighten-4 row d-flex">
+
+      <!-- Navbar brand -->
+      <div class="col-10 d-flex justify-content-start">
         <router-link :to="{name: 'home'}"><img src="../assets/flip-logo.png" class="logoSize"></router-link>
       </div>
-      <div v-if="isLoggedIn()" class="col-2 d-flex justify-content-end">
-        <button class="btn btn-outline-light btn-sm" @click="logout">Logout</button>
-      </div>
-      <div v-else class="col-2 d-flex justify-content-end">
-        <router-link :to="{name: 'auth'}">
-          <button class="btn btn-outline-light btn-sm">Login</button>
-        </router-link>
+
+      <!-- Collapse button -->
+      <div class="col-2">
+        <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+              class="fas fa-bars fa-1x"></i></span></button>
       </div>
 
-    </div>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse rounded shadow" id="navbarSupportedContent1">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link">
+              <router-link :to="{name: 'home'}" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">Home</router-link>
+            </a>
+          </li>
+
+          <div v-if="isLoggedIn()">
+            <li class=" nav-item-active">
+              <a class="nav-link" @click="logout">
+                <router-link :to="{name: 'home'}" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                  aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">Logout</router-link>
+              </a>
+            </li>
+
+            <li class=" nav-item-active">
+              <a class="nav-link">
+                <router-link :to="{name: 'myDecks'}" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                  aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">My Decks</router-link>
+              </a>
+            </li>
+          </div>
+
+          <div class="d-flex justify-content-center" v-else>
+            <li class="d-flex">
+              <a class="nav-link">
+                <router-link :to="{name: 'auth'}" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                  aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">Sign In</router-link>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
   </div>
-  </div>
+
+
+
 </template>
 
 <script>
@@ -45,6 +86,7 @@
         this.$store.dispatch('logout')
       }
     },
+
     components: {
     }
   }
@@ -62,5 +104,27 @@
   .btn-sm {
     height: 25px;
     font-size: 10px;
+  }
+
+  .fa-1x {
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .navbar-toggler.toggler-example {
+    cursor: pointer;
+  }
+
+  .navbar {
+    background-color: #78C2AD;
+  }
+
+  .navbar-collapse {
+    background-color: #72b6fa;
+  }
+
+  .nav-link {
+    display: flex;
+    justify-content: center;
   }
 </style>

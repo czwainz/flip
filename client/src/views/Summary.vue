@@ -2,8 +2,9 @@
   <div class="container-fluid summary-row-height">
     <div class="row d-flex justify-content-center">
       <div class="col-12 d-flex justify-content-around mt-3">
-        <button class="btn btn-danger" @click="playAgain()">Play Again!</button>
-        <button class="btn btn-dark" @click="goHome()">Home</button>
+        <button class="btn btn-danger btn-sm" @click="playAgain()">Play Again!</button>
+        <button class="btn btn-danger btn-sm" @click="playAgainReverse">Play Again Rev!</button>
+        <button class="btn btn-dark btn-sm" @click="goHome()">Home</button>
       </div>
       <div class="card shadow w-75 mt-3 mb-3">
         <div class="card-header">
@@ -16,8 +17,9 @@
         </ul>
       </div>
       <div class="col-12 d-flex justify-content-around mt-3">
-        <button class="btn btn-danger" @click="playAgain()">Play Again!</button>
-        <button class="btn btn-dark" @click="goHome()">Home</button>
+        <button class="btn btn-danger btn-sm" @click="playAgain()">Play Again!</button>
+        <button class="btn btn-danger btn-sm" @click="playAgainReverse">Play Again Rev!</button>
+        <button class="btn btn-dark btn-sm" @click="goHome()">Home</button>
       </div>
     </div>
   </div>
@@ -45,6 +47,12 @@
           this.$store.dispatch('postSummary', this.decksummary)
         }
         this.$store.dispatch('getStudyView', this.activeDeck._id)
+      },
+      playAgainReverse() {
+        if (this.$store.state.user._id == this.activeDeck.authorId) {
+          this.$store.dispatch('postSummary', this.decksummary)
+        }
+        this.$store.dispatch('getStudyViewReverse', this.activeDeck._id)
       },
       goHome() {
         if (this.$store.state.user._id == this.activeDeck.authorId) {

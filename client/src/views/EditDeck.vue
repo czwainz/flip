@@ -68,7 +68,7 @@
 
     <div class="row">
       <div class="col-12">
-        <button @click="deleteDeck" class="btn btn-danger my-1">Delete Deck</button>
+        <button @click="deleteDeck" class="btn btn-danger my-1"><i class="fas fa-times"></i> Delete Deck</button>
       </div>
     </div>
   </div>

@@ -49,7 +49,6 @@
             payload[prop] = this.editedCard[prop]
           }
         }
-        debugger
         this.$store.dispatch('editCard', payload)
         this.showForm = false
       }

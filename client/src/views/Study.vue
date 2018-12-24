@@ -24,7 +24,16 @@
         </div>
       </div>
       <div v-else>
-        <h3 class="mt-5"> This deck has no cards!</h3>
+        <div class="row">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <router-link :to="{name: 'home'}">Home</router-link>
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <h3 class="mt-1"> This deck has no cards!</h3>
         <i class="far fa-7x fa-grimace mt-2" style="color: #5a5a5a;"></i>
       </div>
     </div>
@@ -54,8 +63,15 @@
       }
     },
     mounted() {
-      if (this.$store.state.activeDeck.cards.length > 0) {
+      let cards = this.$store.state.activeDeck.cards
+      if (cards.length > 0) {
         this.hasCards = true
+        let numCards = cards.length
+        let count = 0
+        for (let i = cards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
       } else {
         this.hasCards = false
       }

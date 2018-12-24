@@ -1,5 +1,5 @@
 <template>
-  <div class="deck container-fluid">
+  <div class="deck container-fluid background">
     <!-- Breadcrumbs -->
     <div class="row">
       <nav aria-label="breadcrumb">
@@ -26,11 +26,15 @@
       </div>
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
           <p>Play</p>
         </div>
-        <div class="col-6">
+        <div class="col-4">
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
+          <p>Play Rev</p>
+        </div>
+        <div class="col-4">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
           <p>Edit</p>
         </div>
@@ -65,6 +69,9 @@
     methods: {
       goStudy() {
         this.$store.dispatch('getStudyView', this.deck._id)
+      },
+      goStudyReverse() {
+        this.$store.dispatch('getStudyViewReverse', this.deck._id)
       }
     },
     components: {
