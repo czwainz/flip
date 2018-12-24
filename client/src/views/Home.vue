@@ -11,11 +11,7 @@
       </div>
     </div>  -->
     <div class="row">
-      <div class="col-12" v-if="isLoggedIn">
-        <router-link :to="{name: 'myDecks'}"><button class="btn btn-white my-1 shadow" style="color: var(--gray-dark);">My
-            Decks</button></router-link>
-      </div>
-      <div class="col-12" v-else></div>
+
       <div class="col-12">
         <h4>PUBLIC DECKS</h4>
       </div>
@@ -25,7 +21,7 @@
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h5>{{deck.title}}</h5>
         </div>
-        <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt">
+        <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
       </div>
     </div>
   </div>
