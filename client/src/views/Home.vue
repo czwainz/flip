@@ -25,7 +25,8 @@
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h5>{{deck.title}}</h5>
         </div>
-        <button @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id">Play Rev</button>
+        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
+          Rev</button>
       </div>
     </div>
   </div>
