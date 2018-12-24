@@ -22,6 +22,8 @@
           <h5>{{deck.title}}</h5>
         </div>
         <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
+        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
+          Rev</button>
       </div>
     </div>
   </div>
