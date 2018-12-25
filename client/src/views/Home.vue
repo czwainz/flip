@@ -11,26 +11,19 @@
       </div>
     </div>  -->
     <div class="row">
-
       <div class="col-12">
         <h4>PUBLIC DECKS</h4>
       </div>
     </div>
-    <div class="row d-flex justify-content-around">
-      <div v-for="deck in decks" class="col-5 card home-card border border-white bg-warning my-2 shadow">
-        <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
-          <h5>{{deck.title}}</h5>
-        </div>
-        <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
-        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
-          Rev</button>
-      </div>
-    </div>
+    <!-- for loop moved to pages component -->
+    <pages :decks="decks"></pages>
+    <!-- page component -->
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
+  import pages from '@/components/pages.vue'
 
   export default {
     name: 'home',
@@ -44,6 +37,7 @@
       this.checkLogin()
     },
     components: {
+      pages
     },
     computed: {
       decks() {
@@ -51,12 +45,6 @@
       }
     },
     methods: {
-      goToStudy(deckId) {
-        this.$store.dispatch('getStudyView', deckId)
-      },
-      reverseStudy(deckId) {
-        this.$store.dispatch('getStudyViewReverse', deckId)
-      },
       checkLogin() {
         if (this.$store.state.user._id) {
           this.isLoggedIn = true
@@ -78,7 +66,8 @@
     min-height: 100vh;
     background-color: var(--primary);
   }
-
+</style>
+<style>
   .home-card {
     height: 5rem;
     border-width: 3px !important;
