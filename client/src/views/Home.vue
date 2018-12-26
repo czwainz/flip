@@ -1,46 +1,47 @@
 <template>
-  <!-- CAROUSEL -->
   <div class="home container-fluid background">
-    <div class="row">
-      <b-carousel id="carousel1" style="text-shadow: 1px 1px 2px #333;" controls indicators background="#ababab"
-        :interval="4000" img-width="1024" img-height="480" v-model="slide" @sliding-start="onSlideStart" @sliding-end="onSlideEnd">
-
-        <!-- Text slides with image -->
-        <b-carousel-slide caption="First slide" text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-          img-src="https://picsum.photos/1024/480/?image=52"></b-carousel-slide>
-
-        <!-- Slides with custom text -->
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-          <h1>Hello world!</h1>
-        </b-carousel-slide>
-
-        <!-- Slides with image only -->
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58">
-        </b-carousel-slide>
-
-        <!-- Slides with img slot -->
-        <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-        <b-carousel-slide>
-          <img slot="img" class="d-block img-fluid w-100" width="1024" height="480" src="https://picsum.photos/1024/480/?image=55"
-            alt="image slot">
-        </b-carousel-slide>
-
-        <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-        <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            eros felis, tincidunt a tincidunt eget, convallis vel est. Ut pellentesque
-            ut lacus vel interdum.
-          </p>
-        </b-carousel-slide>
-
-      </b-carousel>
-
-      <p class="mt-4">
-        Slide #: {{ slide }}<br>
-        Sliding: {{ sliding }}
-      </p>
-
+    <!-- BEGIN CAROUSEL -->
+    <div id="carouselIndicators" class="row carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselIndicators" data-slide-to="5"></li>
+        <li data-target="#carouselIndicators" data-slide-to="6"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-interval="10000">
+          <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo" height="275">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+          <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
     <!-- END CAROUSEL -->
 
@@ -63,7 +64,9 @@
     name: 'home',
     data() {
       return {
-        isLoggedIn: false
+        isLoggedIn: false,
+        slide: 0,
+        sliding: null
       }
     },
     mounted() {
@@ -83,6 +86,12 @@
         if (this.$store.state.user._id) {
           this.isLoggedIn = true
         }
+      },
+      onSlideStart(slide) {
+        this.sliding = true
+      },
+      onSlideEnd(slide) {
+        this.sliding = false
       }
     }
   }
@@ -106,5 +115,12 @@
     height: 5rem;
     border-width: 3px !important;
     overflow: hidden;
+  }
+
+  .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    margin-left: 3px;
+    border-radius: 100%;
   }
 </style>
