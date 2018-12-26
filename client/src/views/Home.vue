@@ -12,25 +12,25 @@
         <li data-target="#carouselIndicators" data-slide-to="6"></li>
       </ol>
       <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="10000">
+        <div class="carousel-item active" data-interval="5000">
           <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo" height="275">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
         </div>
-        <div class="carousel-item" data-interval="3000">
+        <div class="carousel-item">
           <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
         </div>
       </div>
