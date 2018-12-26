@@ -21,16 +21,16 @@
         <div class="carousel-item" data-interval="3000">
           <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="3000">
           <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="3000">
           <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="3000">
           <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
         </div>
-        <div class="carousel-item">
+        <div class="carousel-item" data-interval="3000">
           <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
         </div>
       </div>
