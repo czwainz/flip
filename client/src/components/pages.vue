@@ -20,10 +20,9 @@
 <script>
   export default {
     name: 'pages',
-    props: ['decks'],
+    props: ['decks', 'pageSize'],
     data() {
       return {
-        pageSize: 6,
         currentPage: 0,
         visibleDecks: []
       }

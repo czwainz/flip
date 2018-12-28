@@ -13,7 +13,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active" data-interval="5000">
-          <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo" height="275">
+          <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo">
         </div>
         <div class="carousel-item">
           <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
@@ -50,8 +50,8 @@
         <h4>PUBLIC DECKS</h4>
       </div>
     </div>
-    <!-- for loop moved to pages component -->
-    <pages :decks="decks"></pages>
+    <!-- Deck for loop moved to pages component -->
+    <pages :decks="decks" :pageSize="6"></pages>
     <!-- page component -->
   </div>
 </template>
@@ -103,6 +103,9 @@
     height: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+
   }
 
   .container-fluid {
