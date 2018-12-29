@@ -51,7 +51,7 @@
       </div>
     </div>
     <!-- Deck for loop moved to pages component -->
-    <pages :decks="decks" :pageSize="6"></pages>
+    <pages :decks="decks" :pageSize="8"></pages>
     <!-- page component -->
   </div>
 </template>
@@ -108,10 +108,7 @@
 
   }
 
-  .container-fluid {
-    min-height: 100vh;
-    background-color: var(--primary);
-  }
+  .container-fluid {}
 </style>
 <style>
   .home-card {

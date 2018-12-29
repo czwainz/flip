@@ -1,13 +1,15 @@
 <template>
   <div class="decksPage row d-flex justify-content-around">
+    <!-- home page styling -->
     <div v-for="deck in visibleDecks" class="col-5 card home-card border border-white bg-warning my-2 shadow">
       <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
         <h6>{{deck.title}}</h6>
       </div>
-      <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
       <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
         Rev</button>
     </div>
+    <!-- home page styling-->
+    <!-- Page Navigation -->
     <div class="col-12 justify-content-center">
       <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary" @click="updatePage(currentPage-1)"><i
           class="fas fa-angle-double-left"></i></button>
@@ -15,6 +17,7 @@
       <button :disabled="!showNextLink()" type="button" class="btn btn-secondary" @click="updatePage(currentPage+1)"><i
           class="fas fa-angle-double-right"></i></button>
     </div>
+    <!-- page Navigation -->
   </div>
 </template>
 <script>

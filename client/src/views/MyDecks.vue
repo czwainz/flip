@@ -1,5 +1,5 @@
 <template>
-  <div class="myDecks container-fluid background">
+  <div class="myDecks container-fluid">
     <div class="row">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -16,13 +16,15 @@
       <div class="col-12">
         <h4><strong>My Study Decks</strong></h4>
       </div>
+      <!-- decks -->
       <div v-for="deck in myDecks" class="col-5 card deck my-1 shadow myDecks mx-1" @click="goToDeckView(deck._id)"
         :class="deck.color">
-        <!--  -->
-        <!-- v-bind:style="{'background-color': 'var(--info)'}" -->
-        {{deck.title}}<br>
-        {{deck.description}}
+        <strong>{{deck.title}}</strong>
+        <i>{{deck.description}}</i>
       </div>
+      <!-- decks -->
+      <h4>My Decks</h4>
+      <pages :decks="myDecks" :pageSize="6"></pages>
     </div>
     <div class="row">
       <div class="col-12">
@@ -34,6 +36,7 @@
 </template>
 
 <script>
+  import pages from '@/components/pages.vue'
   export default {
     name: 'myDecks',
     mounted() {
@@ -42,6 +45,9 @@
       return {
 
       }
+    },
+    components: {
+      pages
     },
     computed: {
       myDecks() {
@@ -65,25 +71,20 @@
 <style>
   .container-fluid {}
 
-  .btn-circle-outline {
-    border: 1px solid grey;
+  body {
+    background-color: var(--primary);
   }
 
-  .background {
-    min-height: 100vh;
-    background-color: var(--primary);
+  .btn-circle-outline {
+    border: 1px solid grey;
   }
 </style>
 
 <style scoped>
-  /* .deck {
-    background-color: var(--info)
-  } */
-
   .myDecks {
     height: 5rem;
     border-width: 3px !important;
-    overflow: hidden;
+    /* overflow: hidden; */
     justify-content: center;
   }
 </style>
