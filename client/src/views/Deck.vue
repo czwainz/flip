@@ -24,22 +24,28 @@
             <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
+
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
       <div class="row">
+
         <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
           <p>Play</p>
         </div>
+
         <div class="col-4">
           <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
           <p>Play Rev</p>
         </div>
+
         <div class="col-4">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
           <p>Edit</p>
         </div>
+
       </div>
     </div>
+
     <!-- V-ELSE (edit  deck/cards) -->
     <div v-show="isEditingDeck">
       <editDeck v-on:finishedEditing="isEditingDeck = false"></editDeck>
