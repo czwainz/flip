@@ -6,8 +6,8 @@
           <h6>{{deck.title}}</h6>
         </div>
         <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
-        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
-          Rev</button>
+        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">
+          <i class="fab fa-rev"></i> Play Rev</button>
       </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
