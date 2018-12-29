@@ -197,7 +197,5 @@ export default new Vuex.Store({
     // goToLandingPage({ commit }) {
     //   router.push({ name: 'home' })
     // }
-
   }
-
 })

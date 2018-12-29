@@ -53,6 +53,14 @@
               </a>
             </li>
           </div>
+
+          <li class="pl-2 pr-2 pb-2">
+            <!-- Search form -->
+            <form @submit.prevent="search">
+              <input class="form-control text-center" type="text" placeholder="Search decks" aria-label="Search">
+            </form>
+          </li>
+
         </ul>
       </div>
     </nav>
@@ -71,19 +79,21 @@
 
       }
     },
+
     computed: {
       user() {
         return this.$store.state.user
       }
     },
+
     methods: {
       isLoggedIn() {
-        if (this.user._id) {
-          return true
-        } else { return false }
+        return (this.user._id) ? true : false
       },
       logout() {
         this.$store.dispatch('logout')
+      },
+      search() {
       }
     },
 

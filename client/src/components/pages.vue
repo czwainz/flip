@@ -1,41 +1,47 @@
 <template>
   <div class="decksPage row d-flex justify-content-around">
-    <!-- home page styling -->
-    <div v-for="deck in visibleDecks" class="col-5 card home-card border border-white bg-warning my-2 shadow">
-      <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
-        <h6>{{deck.title}}</h6>
+    <div v-for="deck in visibleDecks" class="col-5 d-flex justify-content-center">
+      <div class="card home-card border border-white bg-warning my-2 shadow">
+        <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
+          <h6>{{deck.title}}</h6>
+        </div>
+        <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
+        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">
+          <i class="fab fa-rev"></i> Play Rev</button>
       </div>
-      <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">Play
-        Rev</button>
     </div>
-    <!-- home page styling-->
-    <!-- Page Navigation -->
-    <div class="col-12 justify-content-center">
-      <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary" @click="updatePage(currentPage-1)"><i
+    <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
+      <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary btn-sm" @click="updatePage(currentPage-1)"><i
           class="fas fa-angle-double-left"></i></button>
       Page {{currentPage+1}} of {{totalPages()}}
-      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary" @click="updatePage(currentPage+1)"><i
+      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary btn-sm" @click="updatePage(currentPage+1)"><i
           class="fas fa-angle-double-right"></i></button>
     </div>
-    <!-- page Navigation -->
   </div>
 </template>
 <script>
   export default {
     name: 'pages',
-    props: ['decks', 'pageSize'],
     data() {
       return {
         currentPage: 0,
-        visibleDecks: []
+        pageSize: 6
       }
     },
-    beforeMount() {
-      this.updateVisibleDecks()
+    computed: {
+      decks() {
+        return this.$store.state.publicDecks
+      },
+      visibleDecks: {
+        get: function () {
+          return this.decks.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
+        },
+        set: function (pageNumber) {
+          return this.decks.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
+        }
+      }
     },
-    computed: {},
     methods: {
-
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
       },
@@ -61,9 +67,10 @@
       }
     }
   }
-
 </script>
 
 <style scoped>
-
+  button {
+    vertical-align: middle;
+  }
 </style>

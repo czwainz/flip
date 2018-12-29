@@ -1,50 +1,52 @@
 <template>
   <div class="home container-fluid background">
-    <!-- BEGIN CAROUSEL -->
-    <div id="carouselIndicators" class="row carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselIndicators" data-slide-to="5"></li>
-        <li data-target="#carouselIndicators" data-slide-to="6"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="5000">
-          <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
-        </div>
-        <div class="carousel-item">
-          <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <!-- END CAROUSEL -->
 
+    <div class="d-flex justify-content-center">
+      <!-- BEGIN CAROUSEL -->
+      <div id="carouselIndicators" class="row carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselIndicators" data-slide-to="4"></li>
+          <li data-target="#carouselIndicators" data-slide-to="5"></li>
+          <li data-target="#carouselIndicators" data-slide-to="6"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="5000">
+            <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 flip-carousel" alt="logo">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!-- END CAROUSEL -->
+    </div>
     <div class="row">
       <div class="col-12">
         <h4>PUBLIC DECKS</h4>
@@ -52,6 +54,7 @@
     </div>
     <!-- Deck for loop moved to pages component -->
     <pages :decks="decks" :pageSize="8"></pages>
+    <pages></pages>
     <!-- page component -->
   </div>
 </template>
@@ -105,7 +108,6 @@
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
-
   }
 
   .container-fluid {}
@@ -113,6 +115,7 @@
 <style>
   .home-card {
     height: 5rem;
+    width: 12rem;
     border-width: 3px !important;
     overflow: hidden;
   }
@@ -122,5 +125,21 @@
     height: 10px;
     margin-left: 3px;
     border-radius: 100%;
+  }
+
+  .carousel {
+    min-height: 361px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  @media only screen and (min-width: 500px) {
+    .carousel {
+      width: 500px;
+    }
+  }
+
+  .flip-carousel {
+    padding-top: 70px;
   }
 </style>
