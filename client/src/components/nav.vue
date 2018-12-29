@@ -53,6 +53,12 @@
               </a>
             </li>
           </div>
+
+          <li class="pl-2 pr-2 pb-2">
+            <!-- Search form -->
+            <input class="form-control text-center" type="text" placeholder="Search decks" aria-label="Search">
+          </li>
+
         </ul>
       </div>
     </nav>
