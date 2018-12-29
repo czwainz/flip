@@ -88,7 +88,7 @@
 
     methods: {
       isLoggedIn() {
-        (this.user._id) ? true : false
+        return (this.user._id) ? true : false
       },
       logout() {
         this.$store.dispatch('logout')
