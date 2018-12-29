@@ -112,6 +112,10 @@
     height: 94vh;
   }
 
+  .body {
+    height: 94vh;
+  }
+
   /* .card-info {
     display: table-cell;
     vertical-align: middle;
