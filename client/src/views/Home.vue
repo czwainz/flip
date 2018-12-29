@@ -51,7 +51,7 @@
       </div>
     </div>
     <!-- Deck for loop moved to pages component -->
-    <pages :decks="decks" :pageSize="6"></pages>
+    <pages></pages>
     <!-- page component -->
   </div>
 </template>
@@ -105,7 +105,6 @@
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
-
   }
 
   .container-fluid {
