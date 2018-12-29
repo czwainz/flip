@@ -15,7 +15,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="5000">
-            <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 mt-5" alt="logo">
+            <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 flip-carousel" alt="logo">
           </div>
           <div class="carousel-item">
             <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
@@ -118,6 +118,7 @@
 <style>
   .home-card {
     height: 5rem;
+    width: 12rem;
     border-width: 3px !important;
     overflow: hidden;
   }
@@ -139,5 +140,9 @@
     .carousel {
       width: 500px;
     }
+  }
+
+  .flip-carousel {
+    padding-top: 70px;
   }
 </style>

@@ -16,7 +16,7 @@
           <li class="list-group-item bg-success" v-for="right in decksummary.right">{{right.front}}</li>
         </ul>
       </div>
-      <div class="col-12 d-flex justify-content-around mt-3">
+      <div class="col-12 d-flex justify-content-around mt-3 mb-5">
         <button class="btn btn-danger btn-sm" @click="playAgain()">Play Again!</button>
         <button class="btn btn-danger btn-sm" @click="playAgainReverse">Play Again Rev!</button>
         <button class="btn btn-dark btn-sm" @click="goHome()">Home</button>
