@@ -193,9 +193,11 @@ export default new Vuex.Store({
     postSummary({ commit }, summary) {
       api.put('/decks/' + summary.deckId, summary)
         .then(res => { })
-    },
-    // goToLandingPage({ commit }) {
-    //   router.push({ name: 'home' })
-    // }
-  }
-})
+      // },
+      // deckSearch({ commit }, word) {
+
+      // }
+
+    }
+
+  })
