@@ -1,7 +1,11 @@
 <template>
-  <div class="cardComp card row my-1">
-    <div class="col-5 card-side">{{cardData.front}}</div>
-    <div class="col-5 card-side right">{{cardData.back}}</div>
+  <div class="cardComp row ml-2 mr-2 mb-2 justify-content-around">
+    <div class="col-5 card">
+      <div class="card-side text-center">{{cardData.front}}</div>
+    </div>
+    <div class="col-5 card">
+      <div class="card-side text-center">{{cardData.back}}</div>
+    </div>
     <div v-if="isEditing" class="col-2">
       <button @click="showForm = !showForm" type="button" class="btn btn-success btn-sm mr-2 p-1"><i class="fas fa-pencil-alt"></i></i></button>
       <button @click="removeCard(cardData._id)" class="btn btn-danger btn-sm mr-2 p-1"><i class="fas fa-trash-alt"></i></button>
@@ -67,7 +71,7 @@
     padding: 0px;
   }
 
-  .right {
+  /* .right {
     border-left: 1px solid var(--gray)
-  }
+  } */
 </style>

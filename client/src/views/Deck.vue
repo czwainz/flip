@@ -24,10 +24,17 @@
             <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
-
+      <div class="row d-flex justify-content-around">
+        <div class="col-5">
+          <h3>Front</h3>
+        </div>
+        <div class="col-5">
+          <h3>Back</h3>
+        </div>
+      </div>
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
-      <div class="row">
 
+      <div class="row mt-4">
         <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
           <p>Play</p>

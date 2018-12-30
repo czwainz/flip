@@ -23,7 +23,6 @@
         <i>{{deck.description}}</i>
       </div>
       <!-- decks -->
-      <h4>My Decks</h4>
       <pages :decks="myDecks" :pageSize="6"></pages>
     </div>
     <div class="row">
@@ -83,6 +82,7 @@
 <style scoped>
   .myDecks {
     height: 5rem;
+    /* width: 12rem; */
     border-width: 3px !important;
     /* overflow: hidden; */
     justify-content: center;
