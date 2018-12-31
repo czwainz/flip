@@ -26,7 +26,7 @@
       <pages :decks="myDecks" :pageSize="6"></pages>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mb-5">
         <button @click="addDeck" class="btn btn-secondary btn-circle btn-circle-outline shadow"><i class="fas fa-plus"></i></button>
       </div>
     </div>

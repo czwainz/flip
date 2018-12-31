@@ -18,18 +18,18 @@
     <!-- V-If(view deck/cards)---------- -->
     <div v-show="!isEditingDeck">
       <div class="row">
-        <div class="col-12 mt-4">
+        <div class="col-12">
           <h3>{{deck.title}}</h3>
           <p><strong>Description:</strong> {{deck.description}}<br>
             <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
-      <div class="row d-flex justify-content-around">
+      <div class="row ml-2 mr-2 d-flex justify-content-around">
         <div class="col-5">
-          <h3>Front</h3>
+          <h3 class="text-light">Front</h3>
         </div>
         <div class="col-5">
-          <h3>Back</h3>
+          <h3 class="text-light">Back</h3>
         </div>
       </div>
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
