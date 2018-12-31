@@ -11,10 +11,10 @@
       </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
-      <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary btn-sm" @click="updatePage(currentPage-1)"><i
+      <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage-1)"><i
           class="fas fa-angle-double-left"></i></button>
       Page {{currentPage+1}} of {{totalPages()}}
-      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary btn-sm" @click="updatePage(currentPage+1)"><i
+      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage+1)"><i
           class="fas fa-angle-double-right"></i></button>
     </div>
   </div>
