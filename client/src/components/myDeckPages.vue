@@ -87,6 +87,9 @@
           return 'smallText'
         }
         return 'largeText'
+      },
+      goToStudy(deckId) {
+        this.$store.dispatch('getStudyView', deckId)
       }
     }
   }

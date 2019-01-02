@@ -4,6 +4,7 @@ let Cards = require('../models/card')
 
 //GET
 // @ts-ignore
+// @ts-ignore
 router.get('/', (req, res, next) => {
   Decks.find({})
     .then(decks => {
@@ -53,6 +54,7 @@ router.post('/copy', (req, res, next) => {
       let payload = {
         title: origDeck.title,
         description: origDeck.description,
+        // @ts-ignore
         authorId: req.session.uid,
         public: false,
         tags: origDeck.tags,
@@ -68,6 +70,7 @@ router.post('/copy', (req, res, next) => {
                 origCards.map(card => {
                   Cards.create({
                     title: card.title,
+                    // @ts-ignore
                     authorId: req.session.uid,
                     deckId: newDeck._id,
                     front: card.front,
@@ -78,6 +81,7 @@ router.post('/copy', (req, res, next) => {
                       next()
                     })
                 })
+                // @ts-ignore
               ).then(function (newCards) {
 
               })
@@ -128,6 +132,7 @@ router.put('/:deckId', (req, res, next) => {
 })
 
 //DELETE
+// @ts-ignore
 // @ts-ignore
 router.delete('/:id', (req, res, next) => {
   Decks.findById(req.params.id)

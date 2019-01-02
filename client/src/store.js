@@ -23,7 +23,9 @@ export default new Vuex.Store({
     myDecks: [],
     activeDeck: {},
     publicDecks: [],
-    summary: {}
+    summary: {
+      wrong: []
+    }
   },
   mutations: {
     setUser(state, user) {
@@ -43,6 +45,9 @@ export default new Vuex.Store({
     },
     setSummary(state, summary) {
       state.summary = summary
+    },
+    setActiveDeckCard(state, wrong) {
+      state.activeDeck.cards = wrong
     }
   },
   actions: {
@@ -201,8 +206,9 @@ export default new Vuex.Store({
       api.put('/decks/' + summary.deckId, summary)
         .then(res => { })
     },
-    // goToLandingPage({ commit }) {
-    //   router.push({ name: 'home' })
-    // }
+    playAgainX({ commit }, wrong) {
+      commit('setActiveDeckCard', wrong)
+      router.push({ name: 'study' })
+    }
   }
 })
