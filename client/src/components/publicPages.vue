@@ -11,7 +11,7 @@
           <!-- PLAY BACK TO FRONT -->
           <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
           <!-- COPY DECK BUTTON -->
-          <i @click="copyDeckEdit(deck._id)" class="fas fa-copy"></i>
+          <i @click="copyDeckEdit(deck._id)" class="fas fa-copy" v-if="isLoggedIn()"></i>
         </div>
       </div>
     </div>
@@ -35,6 +35,9 @@
     },
     props: ['decks'],
     computed: {
+      user() {
+        return this.$store.state.user
+      },
       visibleDecks: {
         get: function () {
           return this.decks.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
@@ -45,6 +48,9 @@
       }
     },
     methods: {
+      isLoggedIn() {
+        return (this.user._id) ? true : false
+      },
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
       },

@@ -1,9 +1,21 @@
 <template>
   <div class="myDeckPages row d-flex justify-content-center align-items-stretch ">
-    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 align-middle" @click="goToDeckView(deck._id)"
-      :class="deck.color">
-      <strong>{{deck.title}}</strong>
-      <i>{{deck.description}}</i>
+    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 align-middle" :class="deck.color">
+      <div @click="goToDeckView(deck._id)" class="d-block">
+        <div>
+          <strong>{{deck.title}}</strong>
+        </div>
+        <div>
+          <i>{{deck.description}}</i>
+        </div>
+      </div>
+      <!-- BUTTONS ON DECKS -->
+      <div class="justify-content-around d-flex pb-3">
+        <!-- PLAY BACK TO FRONT -->
+        <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
+        <!-- COPY DECK BUTTON -->
+        <i @click="copyDeckEdit(deck._id)" class="fas fa-copy"></i>
+      </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
       <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage-1)"><i
@@ -57,6 +69,13 @@
       updatePage(pageNumber) {
         this.currentPage = pageNumber
         this.updateVisibleDecks()
+      },
+      copyDeckEdit(deckId) {
+        let payload = { copyDeck: { origDeckId: deckId }, routeTo: 'myDecks' }
+        this.$store.dispatch('copyDeck', payload)
+      },
+      reverseStudy(deckId) {
+        this.$store.dispatch('getStudyViewReverse', deckId)
       }
     }
   }
