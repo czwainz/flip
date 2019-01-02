@@ -41,20 +41,22 @@
 
           <!-- Color Change -->
           <div class="col-12">
-            <div class="btn-group mr-2 mb-1" role="group" aria-label="First group">
+            <div class="btn-group mr-2 mb-1 shadow" role="group" aria-label="First group">
               <button type="button" @click="editedDeck.color = 'secondary'" class="btn btn-secondary">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'danger'" class=" btn btn-danger">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'warning'" class=" btn btn-warning">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'success'" class=" btn btn-success">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'info'" class=" btn btn-info">&emsp;</button>
-              <button type="button" @click="editedDeck.color = 'white'" class=" btn btn-white">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'light'" class=" btn btn-light">&emsp;</button>
             </div>
           </div>
           <!-- Color Change -->
 
           <!-- card component -->
           <div class="col-12">
-            <button type="button" @click="showCardForm = !showCardForm" class="btn btn-dark btn-circle my-1"><i class="fas fa-1x fa-plus"></i></button>
+
+            <button type="button" @click="showCardForm = !showCardForm" class="btn my-1 pb-1"><i class="fas fa-2x fa-plus-circle"></i></button>
+
             <cardForm :deckId="deck._id" v-show="showCardForm"></cardForm>
             <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="true"></cardComp>
           </div>
@@ -142,7 +144,7 @@
     line-height: 1.33;
   }
 
-  /* .form-group {
-    color: whitesmoke;
-  } */
+  .fa-plus-circle {
+    color: #343a40;
+  }
 </style>
