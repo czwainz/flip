@@ -11,6 +11,8 @@
       </div>
       <!-- BUTTONS ON DECKS -->
       <div class="justify-content-around d-flex pb-3">
+        <!-- PLAY FRONT TO BACK -->
+        <i class="fas fa-play" @click='goToStudy(deck._id)'></i>
         <!-- PLAY BACK TO FRONT -->
         <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
         <!-- COPY DECK BUTTON -->
@@ -76,6 +78,9 @@
       },
       reverseStudy(deckId) {
         this.$store.dispatch('getStudyViewReverse', deckId)
+      },
+      goToStudy(deckId) {
+        this.$store.dispatch('getStudyView', deckId)
       }
     }
   }

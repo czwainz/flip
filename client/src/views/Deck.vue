@@ -24,6 +24,23 @@
             <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
+      <div class="row mt-4 mb-4">
+        <div class="col-4">
+          <button @click="goStudy" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
+          <!-- <p>Play</p> -->
+        </div>
+
+        <div class="col-4">
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
+          <!-- <p>Play in Reverse</p> -->
+        </div>
+
+        <div class="col-4">
+          <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary shadow"><i class="fas fa-pencil-alt"></i></button>
+          <!-- <p>Edit</p> -->
+        </div>
+
+      </div>
       <div class="row ml-2 mr-2 d-flex justify-content-around">
         <div class="col-5">
           <h3 class="text-light">Front</h3>
@@ -32,22 +49,23 @@
           <h3 class="text-light">Back</h3>
         </div>
       </div>
+
       <cardComp v-for="card in deck.cards" :cardData="card" :isEditing="false"></cardComp>
 
-      <div class="row mt-4">
+      <div class="row mt-4 mb-4">
         <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
-          <p>Play</p>
+          <!-- <p>Play</p> -->
         </div>
 
         <div class="col-4">
-          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
-          <p>Play in Reverse</p>
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
+          <!-- <p>Play in Reverse</p> -->
         </div>
 
         <div class="col-4">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary shadow"><i class="fas fa-pencil-alt"></i></button>
-          <p>Edit</p>
+          <!-- <p>Edit</p> -->
         </div>
 
       </div>
