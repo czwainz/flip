@@ -49,7 +49,6 @@
     methods: {
       goToDeckView(deckId) {
         this.$store.dispatch('getActiveDeck', deckId)
-
       },
       addDeck() {
         this.$store.dispatch('addDeck')
@@ -61,8 +60,6 @@
 </script>
 
 <style>
- 
-
   body {
     background-color: var(--primary);
   }
@@ -70,12 +67,13 @@
   .btn-circle-outline {
     border: 1px solid grey;
   }
+
   .myDecks {
     /* height: 5rem; */
     /* width: 12rem; */
     border-width: 3px !important;
     /* overflow: hidden; */
     justify-content: center;
-   
+
   }
 </style>

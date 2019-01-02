@@ -161,7 +161,7 @@ export default new Vuex.Store({
     copyDeck({ commit, dispatch }, payload) {
       api.post('/decks/copy', payload.copyDeck)
         .then(res => {
-          // commit('setActiveDeck', res.data)
+          dispatch('getMyDecks')
           router.push({ name: payload.routeTo })
         })
     },
