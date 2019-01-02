@@ -158,6 +158,19 @@ export default new Vuex.Store({
           router.push({ name: 'deck', params: { deckId: res.data._id } })
         })
     },
+    copyDeck({ commit, dispatch }, payload) {
+      // EXPECTED PAYLOAD
+      // copyDeck: {origDeckId: ,
+      // title: req.body.title,
+      // authorId: req.body.authorId,
+      // public: req.body.public},
+      // routeTo: 'home'
+      api.post('/decks/copy', payload.copyDeck)
+        .then(res => {
+          // commit('setActiveDeck', res.data)
+          router.push({ name: payload.routeTo })
+        })
+    },
     //DECKS -- PUBLIC
 
     //STUDY VIEW

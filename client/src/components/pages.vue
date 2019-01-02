@@ -8,6 +8,7 @@
         <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
         <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">
           <i class="fab fa-rev"></i> Play Rev</button>
+        <!-- <button @click="copyDeckEdit({copyDeck: {origDeckId: deck._id, authorId: , title: deck.title + '-new', public: deck.public}, routeTo: 'home'})" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;"> -->
       </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
