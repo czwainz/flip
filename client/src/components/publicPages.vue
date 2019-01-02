@@ -69,7 +69,7 @@
         this.updateVisibleDecks()
       },
       copyDeckEdit(deckId) {
-        let payload = { copyDeck: { origDeckId: deckId }, routeTo: 'home' }
+        let payload = { copyDeck: { origDeckId: deckId }, routeTo: 'myDecks' }
         this.$store.dispatch('copyDeck', payload)
       }
     }

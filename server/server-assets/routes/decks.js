@@ -47,52 +47,54 @@ router.post('/copy', (req, res, next) => {
   // @ts-ignore
   req.body.authorId = req.session.uid
   // get the original deck 
-  Decks.findById(req.body.origDeckId).then(origDeck => {
-
-    // copy to a newDeck, modify author, title, public
-    Decks.create({
-      title: req.body.title,
-      description: origDeck.description,
-      authorId: req.session.uid,
-      public: req.body.public,
-      tags: origDeck.tags,
-      color: origDeck.color
-    }).then(newDeck => {
-      // Get cards from origDeck
-      Cards.find({ deckId: req.body.origDeckId })
-        .then(origCards => {
-          // res.send(cards)
-          Promise.all(
-            origCards.map(card => {
-              Cards.create({
-                title: card.title,
-                authorId: req.session.uid,
-                deckId: newDeck._id,
-                front: card.front,
-                back: card.back
-              })
-                .catch(err => {
-                  console.log('Copy card Error', err)
-                  next()
+  Decks.findById(req.body.origDeckId)
+    .then(origDeck => {
+      // copy to a newDeck, modify author, title, public
+      let payload = {
+        title: origDeck.title,
+        description: origDeck.description,
+        authorId: req.session.uid,
+        public: false,
+        tags: origDeck.tags,
+        color: origDeck.color
+      }
+      Decks.create(payload)
+        .then(newDeck => {
+          // Get cards from origDeck
+          Cards.find({ deckId: req.body.origDeckId })
+            .then(origCards => {
+              // res.send(cards)
+              Promise.all(
+                origCards.map(card => {
+                  Cards.create({
+                    title: card.title,
+                    authorId: req.session.uid,
+                    deckId: newDeck._id,
+                    front: card.front,
+                    back: card.back
+                  })
+                    .catch(err => {
+                      console.log('Copy card Error', err)
+                      next()
+                    })
                 })
+              ).then(function (newCards) {
+
+              })
             })
-          ).then(function (newCards) {
 
-          })
+            .catch(err => {
+              console.log('Find original card Error', err)
+              next()
+            })
+          res.send({ message: "Deck Successfully Copied", newDeck })
         })
-
         .catch(err => {
-          console.log('Find original card Error', err)
+          console.log('Copy deck Error', err)
           next()
         })
-      res.send({ message: "Deck Successfully Copied", newDeck })
-    })
-      .catch(err => {
-        console.log('Copy deck Error', err)
-        next()
-      })
 
-  })
+    })
     .catch(err => {
       console.log('Find original deck error', err)
       next()
