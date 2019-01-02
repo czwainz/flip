@@ -1,21 +1,21 @@
 <template>
   <div class="container-fluid">
-    <div class="row studyRow justify-content-center d-flex">
-      <div v-if="hasCards" @click="back = !back" class="flip-card ">
+    <div class="row studyRow justify-content-center d-flex pt-1" :class="activeDeck.color">
+      <div v-if="hasCards" @click="back = !back" class="flip-card">
         <div :class="{'transition-flip': back}" class="flip-card-inner">
           <div class="flip-card-front justify-content-center d-flex">
             <!-- Front of Card -->
             <div class="card shadow study ">
-              <h1 class="card-info card-body h-100 d-flex align-items-center justify-content-center">
-                {{activeDeck.cards[(deckPosition)].front}} </h1>
+              <h2 class="cardText card-body h-100 d-flex align-items-center justify-content-center">
+                {{activeDeck.cards[(deckPosition)].front}} </h2>
             </div>
           </div>
           <div class="flip-card-back justify-content-center d-flex">
             <!-- Back of Card -->
             <div class="card shadow study d-flex align-middle">
-              <h1 v-if="back" class="card-info card-body h-100 d-flex align-items-center justify-content-center">
-                {{activeDeck.cards[(deckPosition)].back}} </h1>
-              <div v-if="back" class="card-button card-footer d-flex justify-content-around">
+              <h3 v-if="back" id="cardTextBack" class="card-body h-100 d-flex align-items-center justify-content-center">
+                {{activeDeck.cards[(deckPosition)].back}} </h3>
+              <div v-if="back" class="card-footer d-flex justify-content-around">
                 <i class="fas fa-times-circle x-and-check" @click="markWrong()"></i>
                 <i class="fas fa-check-circle x-and-check" @click="markRight()"></i>
               </div>
@@ -89,12 +89,18 @@
       nextCard() {
         if (this.activeDeck.cards.length > this.deckPosition + 1) {
           this.deckPosition++
+          // if (this.activeDeck.cards[(this.deckPosition)].back.length > 20) {
+          //   $('#cardTextBack').textfill({})
+          // }
         } else {
           this.summaryResults.score = Math.round((this.summaryResults.right.length / this.activeDeck.cards.length) * 100)
           this.summaryResults.deckId = this.activeDeck._id
           this.summaryResults.deckTitle = this.activeDeck.title
           this.$store.dispatch('goToSummary', this.summaryResults)
         }
+      },
+      resizeFont() {
+
       }
     }
   }
@@ -116,15 +122,6 @@
     height: 94vh;
   }
 
-  /* .card-info {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .card-button {
-    display: table-cell;
-    vertical-align: middle;
-  } */
 
   .card-study {
     height: 100vh;
