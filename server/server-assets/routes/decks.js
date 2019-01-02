@@ -53,7 +53,7 @@ router.post('/copy', (req, res, next) => {
     Decks.create({
       title: req.body.title,
       description: origDeck.description,
-      authorId: req.body.authorId,
+      authorId: req.session.uid,
       public: req.body.public,
       tags: origDeck.tags,
       color: origDeck.color
@@ -62,20 +62,25 @@ router.post('/copy', (req, res, next) => {
       Cards.find({ deckId: req.body.origDeckId })
         .then(origCards => {
           // res.send(cards)
-          origCards.forEach(card => {
-            Cards.create({
-              title: card.title,
-              authorId: req.body.authorId,
-              deckId: newDeck._id,
-              front: card.front,
-              back: card.back
-            })
-              .catch(err => {
-                console.log('Copy card Error', err)
-                next()
+          Promise.all(
+            origCards.map(card => {
+              Cards.create({
+                title: card.title,
+                authorId: req.session.uid,
+                deckId: newDeck._id,
+                front: card.front,
+                back: card.back
               })
-          });
+                .catch(err => {
+                  console.log('Copy card Error', err)
+                  next()
+                })
+            })
+          ).then(function (newCards) {
+
+          })
         })
+
         .catch(err => {
           console.log('Find original card Error', err)
           next()

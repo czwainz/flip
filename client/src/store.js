@@ -159,12 +159,6 @@ export default new Vuex.Store({
         })
     },
     copyDeck({ commit, dispatch }, payload) {
-      // EXPECTED PAYLOAD
-      // copyDeck: {origDeckId: ,
-      // title: req.body.title,
-      // authorId: req.body.authorId,
-      // public: req.body.public},
-      // routeTo: 'home'
       api.post('/decks/copy', payload.copyDeck)
         .then(res => {
           // commit('setActiveDeck', res.data)

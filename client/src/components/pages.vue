@@ -5,18 +5,22 @@
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h6>{{deck.title}}</h6>
         </div>
-        <!-- <input @click="reverseStudy(deck._id)" type="button" class=" align-items-center" id="deck._id" value="Play bck/Frnt"> -->
-        <button @click="reverseStudy(deck._id)" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;">
-          <i class="fab fa-rev"></i> Play Rev</button>
-        <!-- <button @click="copyDeckEdit({copyDeck: {origDeckId: deck._id, authorId: , title: deck.title + '-new', public: deck.public}, routeTo: 'home'})" type="button" class="btn-sm" id="deck._id" style="font-size:10px; vertical-align: middle;"> -->
+
+        <!-- BUTTONS ON DECKS -->
+        <div class="justify-content-around d-flex pb-3">
+          <!-- PLAY BACK TO FRONT -->
+          <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
+          <!-- COPY DECK BUTTON -->
+          <i @click="copyDeckEdit(deck._id)" class="fas fa-copy"></i>
+        </div>
       </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
       <button :disabled="!showPrevLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage-1)"><i
           class="fas fa-angle-double-left"></i></button>
       Page {{currentPage+1}} of {{totalPages()}}
-      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage+1)"><i
-          class="fas fa-angle-double-right"></i></button>
+      <button :disabled="!showNextLink()" type="button" class="btn btn-secondary btn-sm shadow-sm" @click="updatePage(currentPage+1)">
+        <i class="fas fa-angle-double-right"></i></button>
     </div>
   </div>
 </template>
@@ -65,6 +69,10 @@
       updatePage(pageNumber) {
         this.currentPage = pageNumber
         this.updateVisibleDecks()
+      },
+      copyDeckEdit(deckId) {
+        let payload = { copyDeck: { origDeckId: deckId }, routeTo: 'home' }
+        this.$store.dispatch('copyDeck', payload)
       }
     }
   }
