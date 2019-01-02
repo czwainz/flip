@@ -52,16 +52,14 @@
         <h4>PUBLIC DECKS</h4>
       </div>
     </div>
-    <!-- Deck for loop moved to pages component -->
-    <pages :decks="decks" :pageSize="8"></pages>
-    <!-- <pages></pages> -->
-    <!-- page component -->
+
+    <publicPages :decks="decks" :pageSize="8"></publicPages>
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
-  import pages from '@/components/pages.vue'
+  import publicPages from '@/components/publicPages.vue'
 
   export default {
     name: 'home',
@@ -77,7 +75,7 @@
       this.checkLogin()
     },
     components: {
-      pages
+      publicPages
     },
     computed: {
       decks() {
@@ -116,7 +114,7 @@
   .home-card {
     height: 5rem;
     width: 12rem;
-    border-width: 3px !important;
+    border-width: 2px !important;
     overflow: hidden;
   }
 
