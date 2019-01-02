@@ -19,21 +19,21 @@
     <div v-show="!isEditingDeck">
       <div class="row">
         <div class="col-12">
-          <h3>{{deck.title}}</h3>
+          <h3 class="deckTitle">{{deck.title}}</h3>
           <p><strong>Description:</strong> {{deck.description}}<br>
             <strong>Tags:</strong> {{deck.tags}}</p>
         </div>
       </div>
       <div class="row mt-4 mb-4">
         <div class="col-4">
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
+          <!-- <p>Play in Reverse</p> -->
+        </div>
+        <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
           <!-- <p>Play</p> -->
         </div>
 
-        <div class="col-4">
-          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
-          <!-- <p>Play in Reverse</p> -->
-        </div>
 
         <div class="col-4">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary shadow"><i class="fas fa-pencil-alt"></i></button>
@@ -54,14 +54,15 @@
 
       <div class="row mt-4 mb-4">
         <div class="col-4">
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
+          <!-- <p>Play in Reverse</p> -->
+        </div>
+
+        <div class="col-4">
           <button @click="goStudy" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
           <!-- <p>Play</p> -->
         </div>
 
-        <div class="col-4">
-          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
-          <!-- <p>Play in Reverse</p> -->
-        </div>
 
         <div class="col-4">
           <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary shadow"><i class="fas fa-pencil-alt"></i></button>
@@ -122,6 +123,10 @@
     text-align: center;
     font-size: 12px;
     line-height: 1.42857;
+  }
+
+  .deckTitle {
+    font-family: 'Aleo', serif;
   }
 </style>
 

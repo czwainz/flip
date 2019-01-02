@@ -1,17 +1,17 @@
 <template>
   <div class="myDeckPages row d-flex justify-content-center align-items-stretch ">
-    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 d-flex align-items-stretch"
+    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 d-flex align-items-stretch home-card2"
       :class="deck.color">
       <div @click="goToDeckView(deck._id)" class="d-block">
         <div>
-          <strong>{{deck.title}}</strong>
+          <h6><strong>{{deck.title}}</strong></h6>
         </div>
         <div :class="resizeText(deck.description)">
-          <i>{{deck.description}}</i>
+          <p><i>{{deck.description}}</i></p>
         </div>
       </div>
       <!-- BUTTONS ON DECKS -->
-      <div class="row deckButtons d-flex-row align-self-end">
+      <div class="row deckButtons d-flex-row">
         <!-- PLAY BACK TO FRONT -->
         <div class="col-6">
           <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
@@ -112,5 +112,12 @@
     /* position: fixed; */
     padding-top: 1rem;
     bottom: 0px;
+  }
+
+  .home-card2{
+    height: 9rem;
+    width: 12rem;
+    border-width: 2px !important;
+    overflow: hidden;
   }
 </style>

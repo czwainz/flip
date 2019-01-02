@@ -22,11 +22,12 @@
             </div>
           </div>
         </div>
+
       </div>
       <div v-else>
         <div class="row">
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" :class="activeDeck.color">
               <li class="breadcrumb-item">
                 <router-link :to="{name: 'home'}">Home</router-link>
               </li>
@@ -35,6 +36,10 @@
         </div>
         <h3 class="mt-1"> This deck has no cards!</h3>
         <i class="far fa-7x fa-grimace mt-2" style="color: #5a5a5a;"></i>
+      </div>
+      <!-- felix's restart button -->
+      <div v-if="hasCards" class="col-12" :class="activeDeck.color">
+        <button class="btn btn-block btn-warning shadow border" @click="restartDeck"><strong>restart</strong></button>
       </div>
     </div>
   </div>
@@ -89,15 +94,15 @@
       nextCard() {
         if (this.activeDeck.cards.length > this.deckPosition + 1) {
           this.deckPosition++
-          // if (this.activeDeck.cards[(this.deckPosition)].back.length > 20) {
-          //   $('#cardTextBack').textfill({})
-          // }
         } else {
           this.summaryResults.score = Math.round((this.summaryResults.right.length / this.activeDeck.cards.length) * 100)
           this.summaryResults.deckId = this.activeDeck._id
           this.summaryResults.deckTitle = this.activeDeck.title
           this.$store.dispatch('goToSummary', this.summaryResults)
         }
+      },
+      restartDeck() {
+        this.deckPosition = 0
       },
       resizeFont() {
 

@@ -49,7 +49,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <h4>PUBLIC DECKS</h4>
+        <h4 class="pubDeckTitle">PUBLIC DECKS</h4>
       </div>
     </div>
 
@@ -139,5 +139,9 @@
 
   .flip-carousel {
     padding-top: 70px;
+  }
+
+  .pubDeckTitle {
+    font-family: 'Aleo', serif;
   }
 </style>

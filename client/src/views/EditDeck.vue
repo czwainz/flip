@@ -47,7 +47,7 @@
               <button type="button" @click="editedDeck.color = 'warning'" class=" btn btn-warning">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'success'" class=" btn btn-success">&emsp;</button>
               <button type="button" @click="editedDeck.color = 'info'" class=" btn btn-info">&emsp;</button>
-              <button type="button" @click="editedDeck.color = 'light'" class=" btn btn-light">&emsp;</button>
+              <button type="button" @click="editedDeck.color = 'white'" class=" btn btn-light">&emsp;</button>
             </div>
           </div>
           <!-- Color Change -->

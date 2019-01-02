@@ -14,7 +14,7 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-12">
-        <h4><strong>My Study Decks</strong></h4>
+        <h4 class="studyDeckTitle"><strong>My Study Decks</strong></h4>
       </div>
     </div>
     <myDeckPages></myDeckPages>
@@ -75,5 +75,9 @@
     /* overflow: hidden; */
     justify-content: center;
 
+  }
+
+  .studyDeckTitle {
+    font-family: 'Aleo', serif;
   }
 </style>
