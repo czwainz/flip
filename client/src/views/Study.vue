@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
-    <div class="row studyRow justify-content-center d-flex">
-      <div v-if="hasCards" @click="back = !back" class="flip-card ">
+    <div class="row studyRow justify-content-center d-flex pt-1" :class="activeDeck.color">
+      <div v-if="hasCards" @click="back = !back" class="flip-card">
         <div :class="{'transition-flip': back}" class="flip-card-inner">
           <div class="flip-card-front justify-content-center d-flex">
             <!-- Front of Card -->

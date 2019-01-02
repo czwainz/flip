@@ -36,17 +36,17 @@
 
       <div class="row mt-4">
         <div class="col-4">
-          <button @click="goStudy" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
+          <button @click="goStudy" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
           <p>Play</p>
         </div>
 
         <div class="col-4">
-          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle"><i class="fas fa-play"></i></button>
-          <p>Play Rev</p>
+          <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fas fa-play"></i></button>
+          <p>Play in Reverse</p>
         </div>
 
         <div class="col-4">
-          <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary"><i class="fas fa-pencil-alt"></i></button>
+          <button @click="isEditingDeck = true" class="btn btn-circle btn-secondary shadow"><i class="fas fa-pencil-alt"></i></button>
           <p>Edit</p>
         </div>
 
