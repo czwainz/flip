@@ -22,7 +22,7 @@
 </template>
 <script>
   export default {
-    name: 'pages',
+    name: 'publicPages',
     data() {
       return {
         currentPage: 0,
