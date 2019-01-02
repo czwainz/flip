@@ -57,7 +57,8 @@
           <li class="pl-2 pr-2 pb-2">
             <!-- Search form -->
             <form @submit.prevent="search">
-              <input class="form-control text-center" type="text" placeholder="Search decks" aria-label="Search">
+              <input class="form-control text-center" type="text" placeholder="Search decks" aria-label="Search"
+                v-model="searchWord">
             </form>
           </li>
 
@@ -76,13 +77,16 @@
     name: 'navBar',
     data() {
       return {
-
+        searchWord: ''
       }
     },
 
     computed: {
       user() {
         return this.$store.state.user
+      },
+      searchedDecks() {
+        return this.$store.state.searchedDecks
       }
     },
 
@@ -94,6 +98,8 @@
         this.$store.dispatch('logout')
       },
       search() {
+        this.$store.dispatch('search', this.searchWord)
+        console.log(this.searchedDecks)
       }
     },
 

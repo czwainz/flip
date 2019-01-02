@@ -23,6 +23,8 @@ export default new Vuex.Store({
     myDecks: [],
     activeDeck: {},
     publicDecks: [],
+    searchedDecks: [],
+    keyword: '',
     summary: {
       wrong: []
     }
@@ -48,6 +50,11 @@ export default new Vuex.Store({
     },
     setActiveDeckCard(state, wrong) {
       state.activeDeck.cards = wrong
+    },
+    setSearchDecks(state, keyword) {
+      state.keyword = keyword
+      let re = new RegExp(keyword, 'i')
+      state.searchedDecks = state.publicDecks.filter(deck => (deck.title.toLowerCase() === keyword.toLowerCase() || re.test(deck.tags)))
     }
   },
   actions: {
@@ -209,6 +216,10 @@ export default new Vuex.Store({
     playAgainX({ commit }, wrong) {
       commit('setActiveDeckCard', wrong)
       router.push({ name: 'study' })
+    },
+    search({ commit }, keyword) {
+      commit('setSearchDecks', keyword)
+      router.push({ name: 'searched-decks' })
     }
   }
 })

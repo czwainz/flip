@@ -9,7 +9,7 @@ import myDecks from './views/MyDecks.vue'
 // @ts-ignore
 import deck from './views/Deck.vue'
 // @ts-ignore
-// import editDeck from './views/EditDeck.vue'
+import searchedresults from './views/SearchResults.vue'
 // @ts-ignore
 import Study from './views/Study.vue'
 // @ts-ignore
@@ -52,12 +52,12 @@ export default new Router({
       component: summary,
       props: true
     },
-    // {
-    //   path: '/editDeck/:deckId',
-    //   name: 'editDeck',
-    //   component: editDeck,
-    //   props: true
-    // },
+    {
+      path: '/searched/',
+      name: 'searched-decks',
+      component: searchedresults,
+      props: true
+    },
     {
       path: '/about',
       name: 'about',
