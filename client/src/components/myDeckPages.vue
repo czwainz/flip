@@ -1,20 +1,25 @@
 <template>
   <div class="myDeckPages row d-flex justify-content-center align-items-stretch ">
-    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 align-middle" :class="deck.color">
+    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 d-flex align-items-stretch"
+      :class="deck.color">
       <div @click="goToDeckView(deck._id)" class="d-block">
         <div>
           <strong>{{deck.title}}</strong>
         </div>
-        <div>
+        <div :class="resizeText(deck.description)">
           <i>{{deck.description}}</i>
         </div>
       </div>
       <!-- BUTTONS ON DECKS -->
-      <div class="justify-content-around d-flex pb-3">
+      <div class="row deckButtons d-flex-row align-self-end">
         <!-- PLAY BACK TO FRONT -->
-        <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
+        <div class="col-6">
+          <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
+        </div>
         <!-- COPY DECK BUTTON -->
-        <i @click="copyDeckEdit(deck._id)" class="fas fa-copy"></i>
+        <div class="col-6">
+          <i @click="copyDeckEdit(deck._id)" class="fas fa-copy"></i>
+        </div>
       </div>
     </div>
     <div class="col-12 d-flex justify-content-around mt-4 mb-5 mr-5 ml-5">
@@ -76,6 +81,12 @@
       },
       reverseStudy(deckId) {
         this.$store.dispatch('getStudyViewReverse', deckId)
+      },
+      resizeText(str) {
+        if (str.length > 15) {
+          return 'smallText'
+        }
+        return 'largeText'
       }
     }
   }
@@ -83,6 +94,20 @@
 </script>
 
 <style>
+  .smallText {
+    font-size: .75em;
+  }
 
+  .largeText {
+    font-size: 1em;
+  }
 
+  .deckButtons {
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: center;
+    /* position: fixed; */
+    padding-top: 1rem;
+    bottom: 0px;
+  }
 </style>
