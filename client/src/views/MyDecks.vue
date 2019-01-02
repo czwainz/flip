@@ -16,15 +16,8 @@
       <div class="col-12">
         <h4><strong>My Study Decks</strong></h4>
       </div>
-      <!-- decks -->
-      <div v-for="deck in myDecks" class="col-5 card deck my-1 shadow myDecks mx-1" @click="goToDeckView(deck._id)"
-        :class="deck.color">
-        <strong>{{deck.title}}</strong>
-        <i>{{deck.description}}</i>
-      </div>
-      <!-- decks -->
-      <pages :decks="myDecks" :pageSize="6"></pages>
     </div>
+    <myDeckPages></myDeckPages>
     <div class="row">
       <div class="col-12 mb-5">
         <button @click="addDeck" class="btn btn-secondary btn-circle btn-circle-outline shadow"><i class="fas fa-plus"></i></button>
@@ -35,7 +28,7 @@
 </template>
 
 <script>
-  import pages from '@/components/pages.vue'
+  import myDeckPages from '@/components/myDeckPages.vue'
   export default {
     name: 'myDecks',
     mounted() {
@@ -46,7 +39,7 @@
       }
     },
     components: {
-      pages
+      myDeckPages
     },
     computed: {
       myDecks() {

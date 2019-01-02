@@ -29,10 +29,8 @@
         pageSize: 6
       }
     },
+    props: ['decks'],
     computed: {
-      decks() {
-        return this.$store.state.publicDecks
-      },
       visibleDecks: {
         get: function () {
           return this.decks.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
