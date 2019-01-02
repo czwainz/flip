@@ -1,6 +1,6 @@
 <template>
-  <div class="myDeckPages row d-flex justify-content-center">
-    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1" @click="goToDeckView(deck._id)"
+  <div class="myDeckPages row d-flex justify-content-center align-items-stretch ">
+    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 align-middle" @click="goToDeckView(deck._id)"
       :class="deck.color">
       <strong>{{deck.title}}</strong>
       <i>{{deck.description}}</i>

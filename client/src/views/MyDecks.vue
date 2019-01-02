@@ -61,7 +61,7 @@
 </script>
 
 <style>
-  .container-fluid {}
+ 
 
   body {
     background-color: var(--primary);
@@ -70,14 +70,12 @@
   .btn-circle-outline {
     border: 1px solid grey;
   }
-</style>
-
-<style scoped>
   .myDecks {
-    height: 5rem;
+    /* height: 5rem; */
     /* width: 12rem; */
     border-width: 3px !important;
     /* overflow: hidden; */
     justify-content: center;
+   
   }
 </style>

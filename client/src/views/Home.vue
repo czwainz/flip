@@ -114,7 +114,7 @@
   .home-card {
     height: 5rem;
     width: 12rem;
-    border-width: 3px !important;
+    border-width: 2px !important;
     overflow: hidden;
   }
 

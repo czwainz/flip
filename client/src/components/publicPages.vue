@@ -1,7 +1,7 @@
 <template>
   <div class="decksPage row d-flex justify-content-around">
     <div v-for="deck in visibleDecks" class="col-5 d-flex justify-content-center">
-      <div class="card home-card border border-white bg-warning my-2 shadow">
+      <div class="card home-card my-2 shadow" :class="deck.color">
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h6>{{deck.title}}</h6>
         </div>
