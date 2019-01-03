@@ -16,7 +16,7 @@
             <input type="text" class="form-control" placeholder="Deck Description" name="deckDescription" v-model="editedDeck.description">
             <label for="deckTags">Tags</label>
             <div class="row justify-content-center">
-              <div v-for="tags in deck.tags.split(', ')" class="tagStyle my-1 mx-1 shadow-sm">
+              <div v-for="tags in deck.tags.split(',')" class="tagStyle my-1 mx-1 shadow-sm">
                 <div>
                   <i class="fas fa-times-circle" @click="removeTag(tags)"></i> {{tags}}
                 </div>
@@ -95,7 +95,7 @@
         editedDeck: {
           title: '',
           description: '',
-          tags: '',
+          tags: this.$store.state.activeDeck.tags,
           color: ''
         },
         showCardForm: false
@@ -113,10 +113,21 @@
           deckId: this.deck._id
         }
         for (let prop in this.editedDeck) {
-          if (this.editedDeck[prop]) {
+          if (this.editedDeck[prop] && prop != 'tags') {
             payload.deck[prop] = this.editedDeck[prop]
           }
+          if (prop == 'tags') {
+            if (!this.deck.tags.includes(this.editedDeck.tags)) {
+              payload.deck.tags = this.deck.tags + ', ' + this.editedDeck.tags
+              // remove duplicate tags
+              payload.deck.tags = payload.deck.tags.split(',').filter(function (tag, i, allTags) {
+                return i == allTags.indexOf(tag);
+              }).join(',')
+            }
+          }
         }
+
+
         if (this.checked == 'public') {
           payload.deck.public = true
         }
@@ -132,8 +143,22 @@
       removeTag(tag) {
         console.log(this.editedDeck)
         this.editedDeck.tags = this.deck.tags
-        this.editedDeck.tags = this.editedDeck.tags.replace(tag + ',', '')
-        this.editDeck()
+        this.editedDeck.tags = this.editedDeck.tags.replace(tag, '')
+        if (this.editedDeck.tags[this.editedDeck.tags.length - 1] == ',') {
+          let index = this.editedDeck.tags.lastIndexOf(',')
+          this.editedDeck.tags = this.editedDeck.tags.slice(0, index)
+        }
+        if (this.editedDeck.tags[0] == ',') {
+          this.editedDeck.tags = this.editedDeck.tags.slice(1, this.editedDeck.tags.length)
+        }
+        this.editedDeck.tags = this.editedDeck.tags.replace(',,', ',')
+        let payload = {
+          deckId: this.deck._id,
+          deck: {
+            tags: this.editedDeck.tags
+          }
+        }
+        this.$store.dispatch('editDeck', payload)
       }
     },
     mounted() {
