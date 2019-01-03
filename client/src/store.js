@@ -21,7 +21,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     myDecks: [],
-    activeDeck: {},
+    activeDeck: {
+      rating: []
+    },
     publicDecks: [],
     searchedDecks: [],
     keyword: '',
@@ -221,7 +223,15 @@ export default new Vuex.Store({
     },
     rate({ commit }, rating) {
       api.post('/decks/review/' + rating.deckId, rating)
-        .then(() => { })
+        .then(rating => {
+          console.log(rating)
+        })
+    },
+    updateRate({ commit }, rating) {
+      api.put('/decks/review/' + rating.deckId, rating)
+        .then(rating => {
+          console.log("rating update", rating)
+        })
     }
   }
 })

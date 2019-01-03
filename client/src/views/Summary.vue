@@ -78,6 +78,9 @@
       },
       decksummary() {
         return this.$store.state.summary
+      },
+      user() {
+        return this.$store.state.user
       }
     },
     methods: {
@@ -103,11 +106,24 @@
         this.$store.dispatch('authenticate')
       },
       rate(value) {
+        let userRated = false
+        console.log(this.user)
+        for (let i = 0; i < this.activeDeck.rating.length; i++) {
+          let userIdFromRating = this.activeDeck.rating[i]
+          if (userIdFromRating.userId == this.user._id) {
+            userRated = true
+            break
+          }
+        }
         let rating = {
           rating: value,
           deckId: this.activeDeck._id
         }
-        this.$store.dispatch('rate', rating)
+        if (!userRated) {
+          this.$store.dispatch('rate', rating)
+        } else {
+          this.$store.dispatch('updateRate', rating)
+        }
       }
     }
   }
