@@ -20,11 +20,19 @@
       <div class="row">
         <div class="col-12">
           <h3 class="deckTitle">{{deck.title}}</h3>
-          <p><strong>Description:</strong> {{deck.description}}<br>
-            <strong>Tags:</strong> {{deck.tags}}</p>
+          <p><strong>Description:</strong> {{deck.description}}<br></p>
+          <strong>Tags</strong>
         </div>
       </div>
-      <div class="row mt-4 mb-4">
+      <div class="row justify-content-center">
+        <div v-for="tags in deck.tags.split(', ')" class="tagStyle my-1 mx-1 shadow-sm">
+          <div>
+            {{tags}}
+          </div>
+        </div>
+      </div>
+      <div class="
+          row mt-4 mb-4">
         <div class="col-4">
           <button @click="goStudyReverse" class="btn btn-circle btn-warning btn-circle shadow"><i class="fab fa-rev"></i></button>
           <!-- <p>Play in Reverse</p> -->
@@ -127,6 +135,45 @@
 
   .deckTitle {
     font-family: 'Aleo', serif;
+  }
+
+  .tagStyle {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .tagStyle:nth-child(6n-1) {
+    background-color: rgb(146, 252, 146)
+  }
+
+  .tagStyle:nth-child(6n-2) {
+    background-color: grey;
+    color: white;
+  }
+
+  .tagStyle:nth-child(6n-3) {
+    background-color: rgb(201, 100, 201);
+    color: whitesmoke;
+  }
+
+  .tagStyle:nth-child(6n-4) {
+    background-color: rgb(146, 218, 252)
+  }
+
+  .tagStyle:nth-child(6n-5) {
+    background-color: rgb(228, 246, 123);
+    color: gray;
+  }
+
+  .tagStyle:nth-child(6n-6) {
+    background-color: rgb(248, 194, 108);
+    color: gray;
   }
 </style>
 

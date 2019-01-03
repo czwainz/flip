@@ -14,8 +14,15 @@
             <input type="text" class="form-control" placeholder="Deck Title" name="deckTitle" v-model="editedDeck.title">
             <label for="deckDescription">Current Deck Description: {{deck.description}}</label>
             <input type="text" class="form-control" placeholder="Deck Description" name="deckDescription" v-model="editedDeck.description">
-            <label for="deckTags">Current Deck Tags: {{deck.tags}}</label>
-            <input type="text" class="form-control" placeholder="Deck Tags" name="deckTags" v-model="editedDeck.tags">
+            <label for="deckTags">Tags</label>
+            <div class="row justify-content-center">
+              <div v-for="tags in deck.tags.split(', ')" class="tagStyle my-1 mx-1 shadow-sm">
+                <div>
+                  <i class="fas fa-times-circle" @click="removeTag(tags)"></i> {{tags}}
+                </div>
+              </div>
+            </div>
+            <input type="text" class="form-control" placeholder="Separate by comma" name="deckTags" v-model="editedDeck.tags">
 
             <!-- radio button -->
             <div class="form-check form-check-inline">
@@ -121,10 +128,16 @@
       },
       deleteDeck() {
         this.$store.dispatch('deleteDeck', this.deck._id)
+      },
+      removeTag(tag) {
+        console.log(this.editedDeck)
+        this.editedDeck.tags = this.deck.tags
+        this.editedDeck.tags = this.editedDeck.tags.replace(tag + ',', '')
+        this.editDeck()
       }
     },
     mounted() {
-      // console.log(this.$store.state.activeDeck)
+      console.log(this.$store.state.activeDeck)
     },
     components: {
       cardComp,
@@ -146,5 +159,9 @@
 
   .fa-plus-circle {
     color: #343a40;
+  }
+
+  .fa-times-circle {
+    color: darkgray
   }
 </style>
