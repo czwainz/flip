@@ -69,7 +69,7 @@
           </div>
           <!-- card component -->
 
-          <button type="submit" class="btn btn-warning"><i class="far fa-save"></i></button>
+          <button type="submit" class="btn btn-warning mb-1"><i class="far fa-save"></i></button>
         </form>
 
       </div>

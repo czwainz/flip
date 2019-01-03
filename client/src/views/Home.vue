@@ -107,8 +107,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-
-  /* .container-fluid {} */
 </style>
 <style>
   .home-card {

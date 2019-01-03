@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="row studyRow justify-content-center d-flex pt-1" :class="activeDeck.color">
+  <div class="row theRow d-flex justify-content-center">
+    <div class="col-12 studyRow pt-1" :class="activeDeck.color">
       <div v-if="hasCards" @click="back = !back" class="flip-card">
         <div :class="{'transition-flip': back}" class="flip-card-inner">
           <div class="flip-card-front justify-content-center d-flex">
@@ -22,7 +22,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div v-else>
         <div class="row">
@@ -38,8 +37,8 @@
         <i class="far fa-7x fa-grimace mt-2" style="color: #5a5a5a;"></i>
       </div>
       <!-- felix's restart button -->
-      <div v-if="hasCards" class="col-12" :class="activeDeck.color">
-        <button class="btn btn-block btn-warning shadow border" @click="restartDeck"><strong>restart</strong></button>
+      <div v-if="hasCards" class="restartLink col-12">
+        <p @click="restartDeck"><strong><u>restart</u></strong></p>
       </div>
     </div>
   </div>
@@ -112,6 +111,10 @@
 
 </script>
 
+<style scoped>
+  /* .container-fluid {} */
+</style>
+
 <style>
   .study {
     height: 90%;
@@ -119,8 +122,11 @@
     display: table;
   }
 
-  .studyRow {
-    height: 94vh;
+  .theRow {
+    height: 94vh !important;
+    width: 100vw !important;
+    padding: 0px !important;
+    margin: 0px !important;
   }
 
   .body {
@@ -168,5 +174,11 @@
 
   .x-and-check {
     font-size: 30px;
+  }
+
+  .restartLink {
+    display: flex;
+    justify-content: center;
+    color: gray;
   }
 </style>

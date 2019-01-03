@@ -11,7 +11,7 @@
             <textarea class="form-control" name="cardBack" placeholder="Card Back" maxlength="250" v-model="cardBack"
               rows="2"></textarea>
 
-            <button type="submit" class="btn btn-warning btn-block mt-1 ">Add Card</button>
+            <button type="submit" class="btn btn-warning btn-block mt-1">Add Card</button>
           </div>
         </form>
       </div>
