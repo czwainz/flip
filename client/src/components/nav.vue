@@ -99,7 +99,6 @@
       },
       search() {
         this.$store.dispatch('search', this.searchWord)
-        console.log(this.searchedDecks)
       }
     },
 

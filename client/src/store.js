@@ -54,7 +54,7 @@ export default new Vuex.Store({
     setSearchDecks(state, keyword) {
       state.keyword = keyword
       let re = new RegExp(keyword, 'i')
-      state.searchedDecks = state.publicDecks.filter(deck => (deck.title.toLowerCase() === keyword.toLowerCase() || re.test(deck.tags)))
+      state.searchedDecks = state.publicDecks.filter(deck => (re.test(deck.title) || re.test(deck.tags) || re.test(deck.description)))
     }
   },
   actions: {
