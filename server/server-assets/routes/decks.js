@@ -1,9 +1,9 @@
 let router = require('express').Router()
 let Decks = require('../models/deck')
 let Cards = require('../models/card')
+let Ratings = require('../models/rating')
 
 //GET
-// @ts-ignore
 // @ts-ignore
 router.get('/', (req, res, next) => {
   Decks.find({})

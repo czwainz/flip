@@ -29,7 +29,7 @@ let auth = require('./server-assets/auth/routes')
 server.use(auth.session)
 server.use(auth.router)
 
-let publicDeckRoutes = require('./server-assets/routes/pubicDecks')
+let publicDeckRoutes = require('./server-assets/routes/publicDecks')
 server.use('/api/decks/', publicDeckRoutes)
 
 //Gate Keeper Must login to access any route below this code
