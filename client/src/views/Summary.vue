@@ -37,7 +37,7 @@
         </fieldset>
       </form>
       <div>
-        {{activeDeck.rating}}
+        {{averageRating()}}
       </div>
 
 
@@ -124,6 +124,14 @@
         } else {
           this.$store.dispatch('updateRate', rating)
         }
+      },
+      averageRating() {
+        let totleRate = 0
+        this.activeDeck.rating.forEach(rate => {
+          totleRate += rate.rating
+          console.log(totleRate)
+        });
+        return Math.round(100 * totleRate / this.activeDeck.rating.length) / 100
       }
     }
   }
