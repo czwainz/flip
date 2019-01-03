@@ -12,32 +12,28 @@
       </div>
 
       <!-- STAR RATING -->
-      <form @submit.prevent="rate(value)" class="col-12 justify-content-center d-flex mt-3">
-        <fieldset class="rating">
-          <input @click="rate(5)" type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
-            title="Awesome - 5 stars"></label>
-          <input @click="rate(4.5)" type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
-            for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input @click="rate(4)" type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
-            title="Pretty good - 4 stars"></label>
-          <input @click="rate(3.5)" type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
-            for="star3half" title="Meh - 3.5 stars"></label>
-          <input @click="rate(3)" type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
-            title="Meh - 3 stars"></label>
-          <input @click="rate(2.5)" type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
-            for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input @click="rate(2)" type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
-            title="Kinda bad - 2 stars"></label>
-          <input @click="rate(1.5)" type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
-            for="star1half" title="Meh - 1.5 stars"></label>
-          <input @click="rate(1)" type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
-            title="Sucks big time - 1 star"></label>
-          <input @click="rate(0.5)" type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf"
-            title="Sucks big time - 0.5 stars"></label>
-        </fieldset>
+      <form class="col-12 justify-content-center d-flex mt-3">
+        <div class="rate">
+          <input type="radio" id="star5" name="rate" value="5" :checked="checkRating(5)" />
+          <label @click="rate(5)" for="star5" title="text">5 stars</label>
+
+          <input type="radio" id="star4" name="rate" value="4" :checked="checkRating(4)" />
+          <label @click="rate(4)" for="star4" title="text">4 stars</label>
+
+          <input type="radio" id="star3" name="rate" value="3" :checked="checkRating(3)" />
+          <label @click="rate(3)" for="star3" title="text">3 stars</label>
+
+          <input type="radio" id="star2" name="rate" value="2" :checked="checkRating(2)" />
+          <label @click="rate(2)" for="star2" title="text">2 stars</label>
+
+          <input type="radio" id="star1" name="rate" value="1" :checked="checkRating(1)" />
+          <label @click="rate(1)" for="star1" title="text">1 star</label>
+        </div>
       </form>
-      <div>
-        {{averageRating()}}
+      <div class="col-12 justify-content-center mb-3">
+        <h5>
+          Average Rating {{averageRating()}}
+        </h5>
       </div>
 
 
@@ -69,7 +65,7 @@
     name: 'summary',
     data() {
       return {
-
+        myRating: 0
       }
     },
     computed: {
@@ -105,21 +101,24 @@
         }
         this.$store.dispatch('authenticate')
       },
-      rate(value) {
+      userHasRating() {
         let userRated = false
-        console.log(this.user)
         for (let i = 0; i < this.activeDeck.rating.length; i++) {
           let userIdFromRating = this.activeDeck.rating[i]
           if (userIdFromRating.userId == this.user._id) {
             userRated = true
+            this.myRating = userIdFromRating.rating
             break
           }
         }
+        return userRated
+      },
+      rate(value) {
         let rating = {
           rating: value,
           deckId: this.activeDeck._id
         }
-        if (!userRated) {
+        if (!this.userHasRating()) {
           this.$store.dispatch('rate', rating)
         } else {
           this.$store.dispatch('updateRate', rating)
@@ -129,9 +128,11 @@
         let totleRate = 0
         this.activeDeck.rating.forEach(rate => {
           totleRate += rate.rating
-          console.log(totleRate)
         });
         return Math.round(100 * totleRate / this.activeDeck.rating.length) / 100
+      },
+      checkRating(value) {
+        return (value >= this.myRating) ? "checked" : ""
       }
     }
   }
@@ -152,71 +153,50 @@
     background-color: rgb(240, 241, 231);
   }
 
-  /* STAR RATING CSS */
-  @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-  fieldset,
-  label {
+  * {
     margin: 0;
     padding: 0;
   }
 
-  body {
-    margin: 20px;
-  }
-
-  h1 {
-    font-size: 1.5em;
-    margin: 10px;
-  }
-
-  /****** Style Star Rating Widget *****/
-
-  .rating {
-    border: none;
+  .rate {
     float: left;
+    height: 46px;
+    padding: 0 10px;
   }
 
-  .rating>input {
-    display: none;
-  }
-
-  .rating>label:before {
-    margin: 5px;
-    font-size: 1.25em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "\f005";
-  }
-
-  .rating>.half:before {
-    content: "\f089";
+  .rate:not(:checked)>input {
     position: absolute;
+    top: -9999px;
   }
 
-  .rating>label {
-    color: #ddd;
+  .rate:not(:checked)>label {
     float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
   }
 
-  /***** CSS Magic to Highlight Stars on Hover *****/
-
-  .rating>input:checked~label,
-  /* show gold star when clicked */
-  .rating:not(:checked)>label:hover,
-  /* hover current star */
-  .rating:not(:checked)>label:hover~label {
-    color: #FFD700;
+  .rate:not(:checked)>label:before {
+    content: '★ ';
   }
 
-  /* hover previous stars in list */
+  .rate>input:checked~label {
+    color: #ffc700;
+  }
 
-  .rating>input:checked+label:hover,
-  /* hover current star when changing rating */
-  .rating>input:checked~label:hover,
-  .rating>label:hover~input:checked~label,
-  /* lighten current selection */
-  .rating>input:checked~label:hover~label {
-    color: #FFED85;
+  .rate:not(:checked)>label:hover,
+  .rate:not(:checked)>label:hover~label {
+    color: #deb217;
+  }
+
+  .rate>input:checked+label:hover,
+  .rate>input:checked+label:hover~label,
+  .rate>input:checked~label:hover,
+  .rate>input:checked~label:hover~label,
+  .rate>label:hover~input:checked~label {
+    color: #c59b08;
   }
 </style>
