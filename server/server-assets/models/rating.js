@@ -6,7 +6,7 @@ let schemaName = 'Rating'
 
 
 let schema = new Schema({
-  rating: { type: String, required: true },
+  rating: { type: Number, required: true },
   userId: { type: ObjectId, ref: 'User', required: true },
   deckId: { type: ObjectId, ref: 'Deck', required: true }
 }, { timestamps: true })
