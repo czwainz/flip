@@ -183,7 +183,6 @@ export default new Vuex.Store({
     getStudyView({ commit }, deckId) {
       api.get('/decks/' + deckId)
         .then(res => {
-          console.log('active Deck: ', res.data)
           commit('setActiveDeck', res.data)
           router.push({ name: 'study', params: { deckId: deckId } })
         })
@@ -192,7 +191,6 @@ export default new Vuex.Store({
     getStudyViewReverse({ commit }, deckId) {
       api.get('/decks/' + deckId)
         .then(res => {
-          console.log('active Deck Reversed: ', res.data)
           let deck = res.data
           for (let i = 0; i < deck.cards.length; i++) {
             let front = deck.cards[i].back;
@@ -220,6 +218,10 @@ export default new Vuex.Store({
     search({ commit }, keyword) {
       commit('setSearchDecks', keyword)
       router.push({ name: 'searched-decks' })
+    },
+    rate({ commit }, rating) {
+      api.post('/decks/review/' + rating.deckId, rating)
+        .then(() => { })
     }
   }
 })

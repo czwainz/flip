@@ -42,6 +42,20 @@ router.post('/', (req, res, next) => {
       next()
     })
 })
+//POST review
+router.post('/review/:deckId', (req, res, next) => {
+  // @ts-ignore
+  req.body.userId = req.session.uid
+  req.body.deckId = req.params.deckId
+  Ratings.create(req.body)
+    .then(newRating => {
+      res.send(newRating)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
 
 // COPY DECK
 router.post('/copy', (req, res, next) => {
@@ -106,7 +120,7 @@ router.post('/copy', (req, res, next) => {
 })
 
 
-//PUT
+//UPDATE DECK
 router.put('/:deckId', (req, res, next) => {
   Decks.findById(req.params.deckId)
     .then(deck => {
@@ -131,8 +145,26 @@ router.put('/:deckId', (req, res, next) => {
     })
 })
 
+//UPDATE REVIEW
+router.put('/review/:deckId', (req, res, next) => {
+  Ratings.findOne({ deckId: req.params.deckId, userId: req.session.uid })
+    .then(rating => {
+      rating.update(req.body, (err) => {
+        if (err) {
+          console.log(err)
+          next()
+          return
+        }
+        res.send({ message: "Review Successfully Updated", oldRating: rating })
+      });
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
 //DELETE
-// @ts-ignore
 // @ts-ignore
 router.delete('/:id', (req, res, next) => {
   Decks.findById(req.params.id)
