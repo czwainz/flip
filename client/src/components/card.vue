@@ -3,12 +3,14 @@
     <div class="col-5 card">
       <div class="card-side text-center">{{cardData.front}}</div>
     </div>
-    <div class="col-5 card">
+    <div class="col-6 card">
       <div class="card-side text-center">{{cardData.back}}</div>
     </div>
-    <div v-if="isEditing" class="col-2">
-      <button @click="showForm = !showForm" type="button" class="btn btn-success btn-sm mr-2 p-1"><i class="fas fa-pencil-alt"></i></i></button>
-      <button @click="removeCard(cardData._id)" class="btn btn-danger btn-sm mr-2 p-1"><i class="fas fa-trash-alt"></i></button>
+    <div v-if="isEditing" class="col-12">
+      <div class="btn-group w-100" role="group">
+        <button @click="showForm = !showForm" type="button" class="btn btn-warning my-3"><i class="fas fa-pencil-alt"></i></i></button>
+        <button @click="removeCard(cardData._id)" class="btn btn-danger my-3"><i class="fas fa-trash-alt"></i></button>
+      </div>
     </div>
     <form v-show="showForm" @submit.prevent="editCard">
       <div class="form-group">
