@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-center">
       <!-- BEGIN CAROUSEL -->
       <div id="carouselIndicators" class="row carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators mb-1">
           <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselIndicators" data-slide-to="1"></li>
           <li data-target="#carouselIndicators" data-slide-to="2"></li>
