@@ -24,8 +24,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-left: -20px;
-    margin-right: -20px;
+    /* margin-left: -20px;
+    margin-right: -20px; */
   }
 
   #nav {

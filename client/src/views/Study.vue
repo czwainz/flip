@@ -1,4 +1,4 @@
-<template>
+<template class="container">
   <div class="row theRow d-flex justify-content-center">
     <div class="col-12 studyRow pt-1" :class="activeDeck.color">
       <div v-if="hasCards" @click="back = !back" class="flip-card">
@@ -37,7 +37,7 @@
         <i class="far fa-7x fa-grimace mt-2" style="color: #5a5a5a;"></i>
       </div>
       <!-- felix's restart button -->
-      <div v-if="hasCards" class="restartLink col-12">
+      <div v-if="hasCards" class="restartLink">
         <p @click="restartDeck"><strong><u>restart</u></strong></p>
       </div>
     </div>
@@ -112,7 +112,9 @@
 </script>
 
 <style scoped>
-  /* .container-fluid {} */
+  .container {
+    margin: -10px;
+  }
 </style>
 
 <style>
@@ -120,22 +122,34 @@
     height: 90%;
     width: 90%;
     display: table;
+    margin-left: 20px;
+    margin-top: 15px;
   }
 
+  .studyRow {
+    width: 100vw;
+    height: 90vh;
+    display: block;
+    /* justify-content: center; */
+  }
+
+  @media screen and (max-height: 500px) {
+    .studyRow {
+      height: 100vh;
+    }
+  }
+
+
   .theRow {
-    height: 94vh !important;
-    width: 100vw !important;
-    padding: 0px !important;
-    margin: 0px !important;
+    height: 90vh !important;
+    /* width: 100vw !important; */
+    /* padding: -10px; */
+    /* margin: -10px; */
   }
 
   .body {
     height: 94vh;
-  }
 
-
-  .card-study {
-    height: 100vh;
   }
 
   .flip-card {
@@ -143,7 +157,6 @@
     height: 100%;
     perspective: 1000px;
   }
-
 
   .flip-card-inner {
     transition: transform 1.5s;

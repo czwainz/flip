@@ -7,8 +7,7 @@
         <button class="btn btn-dark btn-sm btn-circle" @click="goHome()"><i class="fas fa-home"></i></button>
       </div>
       <div class="col-12 mt-3">
-        <button class="btn btn-sm redtimes" @click="playAgainX()">Replay <i class="fas fa-times-circle "></i>
-          !</button>
+        <button class="btn btn-sm redtimes" @click="playAgainX()">Replay <i class="fas fa-times-circle "></i></button>
       </div>
 
       <!-- STAR RATING -->
@@ -53,8 +52,7 @@
         <button class="btn btn-dark btn-sm btn-circle" @click="goHome()"><i class="fas fa-home"></i></button>
       </div>
       <div class="col-12 mt-3 mb-3">
-        <button class="btn btn-sm redtimes" @click="playAgainX()">Replay <i class="fas fa-times-circle "></i>
-          !</button>
+        <button class="btn btn-sm redtimes mb-3" @click="playAgainX()">Replay <i class="fas fa-times-circle "></i></button>
       </div>
     </div>
   </div>
@@ -152,7 +150,7 @@
   }
 
   .summary-row-height {
-    height: 100vh;
+    height: 120vh;
     background-color: rgb(240, 241, 231);
   }
 

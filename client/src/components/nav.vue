@@ -112,9 +112,26 @@
   .logoSize {
     height: 6vh;
     width: auto;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
+
+
+  @media screen and (max-height: 500px) {
+
+    .logoSize,
+    .navbar-toggler {
+      margin-top: 15px;
+    }
+
+    .logoSize {
+      height: 8vh;
+      width: auto;
+      margin-top: 1.5rem;
+    }
+  }
+
+
 
   .btn-sm {
     height: 25px;

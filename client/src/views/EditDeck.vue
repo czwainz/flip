@@ -69,7 +69,7 @@
           </div>
           <!-- card component -->
 
-          <button type="submit" class="btn btn-warning mb-1"><i class="far fa-save"></i></button>
+          <button type="submit" class="btn btn-warning mb-1"><i class="far fa-save"></i> &nbsp; Save Deck&nbsp;</button>
         </form>
 
       </div>
@@ -77,7 +77,7 @@
 
     <div class="row">
       <div class="col-12">
-        <button @click="deleteDeck" class="btn btn-danger my-1"><i class="fas fa-times"></i> Delete Deck</button>
+        <button @click="deleteDeck" class="btn btn-danger my-3"><i class="fas fa-times"></i> Delete Deck</button>
       </div>
     </div>
   </div>
