@@ -2,8 +2,8 @@
   <div class="container-fluid summary-row-height">
     <div class="row d-flex justify-content-center">
       <div class="col-12 d-flex justify-content-around mt-3">
-        <button class="btn btn-danger btn-sm btn-circle" @click="playAgain()"><i class="fas fa-play"></i></button>
         <button class="btn btn-danger btn-sm btn-circle" @click="playAgainReverse"><i class="fab fa-rev"></i></button>
+        <button class="btn btn-danger btn-sm btn-circle" @click="playAgain()"><i class="fas fa-play"></i></button>
         <button class="btn btn-dark btn-sm btn-circle" @click="goHome()"><i class="fas fa-home"></i></button>
       </div>
       <div class="col-12 mt-3">
@@ -47,8 +47,8 @@
         </ul>
       </div>
       <div class="col-12 d-flex justify-content-around mt-3">
-        <button class="btn btn-danger btn-sm btn-circle" @click="playAgain()"><i class="fas fa-play"></i></button>
         <button class="btn btn-danger btn-sm btn-circle" @click="playAgainReverse"><i class="fab fa-rev"></i></button>
+        <button class="btn btn-danger btn-sm btn-circle" @click="playAgain()"><i class="fas fa-play"></i></button>
         <button class="btn btn-dark btn-sm btn-circle" @click="goHome()"><i class="fas fa-home"></i></button>
       </div>
       <div class="col-12 mt-3 mb-3">
