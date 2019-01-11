@@ -3,14 +3,17 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from './router';
 
+let production = !window.location.host.includes('localhost')
+let baseURL = production ? 'https://flipflashcards.herokuapp.com/' : '//localhost:3000/'
+
 let auth = axios.create({
-  baseURL: "//localhost:3000/auth",
+  baseURL: baseURL + "auth",
   withCredentials: true,
   timeout: 3000
 })
 
 let api = axios.create({
-  baseURL: "//localhost:3000/api",
+  baseURL: baseURL + "api",
   withCredentials: true,
   timeout: 3000
 })

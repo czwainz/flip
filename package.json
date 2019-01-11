@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,9 @@
     "express": "^4.16.4",
     "express-session": "^1.15.0",
     "mongoose": "^4.8.1"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "npm": "^6.0.0"
   }
 }
