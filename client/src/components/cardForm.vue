@@ -5,7 +5,7 @@
 
         <form @submit.prevent="addCard">
           <div class="form-group">
-            <label for="cardFront">Card Front</label>
+            <label for="cardFront">Card Front <span class="text-muted">{{cardFront.length}}/250</span></label>
             <input type="text" class="form-control" name="cardFront" placeholder="Card Front" maxlength="250" v-model="cardFront">
             <label for="cardBack">Card Back <span class="text-muted">{{cardBack.length}}/250</span></label>
             <textarea class="form-control" name="cardBack" placeholder="Card Back" maxlength="250" v-model="cardBack"

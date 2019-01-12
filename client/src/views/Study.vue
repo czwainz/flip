@@ -16,8 +16,8 @@
               <h3 v-if="back" id="cardTextBack" class="card-body h-100 d-flex align-items-center justify-content-center">
                 {{activeDeck.cards[(deckPosition)].back}} </h3>
               <div v-if="back" class="card-footer d-flex justify-content-around">
-                <i class="fas fa-times-circle x-and-check" @click="markWrong()"></i>
-                <i class="fas fa-check-circle x-and-check" @click="markRight()"></i>
+                <i class="fas fa-times-circle x-and-check" @click="markWrong()" style="color:  rgb(221, 43, 43)"></i>
+                <i class="fas fa-check-circle x-and-check" @click="markRight()" style="color: rgb(38, 211, 38)"></i>
               </div>
             </div>
           </div>

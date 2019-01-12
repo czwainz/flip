@@ -1,13 +1,13 @@
 <template>
   <div class="myDeckPages row d-flex justify-content-center align-items-stretch ">
-    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 d-flex align-items-stretch home-card2"
+    <div v-for="deck in visibleDecks" class="col-5 card deck my-1 shadow myDecks mx-1 d-flex align-items-stretch  home-card2"
       :class="deck.color">
       <div @click="goToDeckView(deck._id)" class="d-block">
         <div>
-          <h6><strong>{{deck.title}}</strong></h6>
+          <h6 :class="resizeTextTitle(deck.title)"><strong>{{deck.title}}</strong></h6>
         </div>
         <div :class="resizeText(deck.description)">
-          <p><i>{{deck.description}}</i></p>
+          <p class="lineSpacer"><i>{{deck.description}}</i></p>
         </div>
       </div>
       <!-- BUTTONS ON DECKS -->
@@ -88,6 +88,15 @@
         }
         return 'largeText'
       },
+      resizeTextTitle(str) {
+        if (str.length > 15) {
+          return 'extraSmallTitle'
+        }
+        else if (str.length > 10) {
+          return 'smallTextTitle'
+        }
+        return 'largeTextTitle'
+      },
       goToStudy(deckId) {
         this.$store.dispatch('getStudyView', deckId)
       }
@@ -102,7 +111,23 @@
   }
 
   .largeText {
+    font-size: .85em;
+  }
+
+  .extraSmallTitle {
+    font-size: .85em;
+  }
+
+  .smallTextTitle {
     font-size: 1em;
+  }
+
+  .largeTextTitle {
+    font-size: 1.22em;
+  }
+
+  .lineSpacer {
+    line-height: 100%;
   }
 
   .deckButtons {
@@ -110,11 +135,11 @@
     /* align-items: flex-end; */
     justify-content: center;
     /* position: fixed; */
-    padding-top: 1rem;
+    padding-top: .5rem;
     bottom: 0px;
   }
 
-  .home-card2{
+  .home-card2 {
     height: 9rem;
     width: 12rem;
     border-width: 2px !important;
