@@ -1,13 +1,13 @@
 <template>
   <div class="decksPage row d-flex justify-content-center">
-    <div v-for="deck in visibleDecks" class="col-5 d-flex justify-content-center">
+    <div v-for="deck in visibleDecks" class="col-xs-5 col-sm-5 col-lg-3 d-flex justify-content-center">
       <div class="card home-card2 my-2 shadow" :class="deck.color">
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h6>{{deck.title}}</h6>
         </div>
 
         <!-- BUTTONS ON DECKS -->
-        <div class="justify-content-around d-flex pb-3">
+        <div class=" card-footer justify-content-around d-flex pb-3">
           <!-- PLAY BACK TO FRONT -->
           <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
           <!-- COPY DECK BUTTON -->
@@ -34,6 +34,9 @@
       }
     },
     props: ['decks'],
+    mounted(){
+     this.windowSize()
+    },
     computed: {
       user() {
         return this.$store.state.user
@@ -48,6 +51,11 @@
       }
     },
     methods: {
+      windowSize(){
+         if($(window).width() > 600){
+        this.pageSize= 12
+      }
+      },
       isLoggedIn() {
         return (this.user._id) ? true : false
       },

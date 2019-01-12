@@ -11,7 +11,7 @@
         </div>
       </div>
       <!-- BUTTONS ON DECKS -->
-      <div class="row deckButtons d-flex-row">
+      <div class=" card-footer row deckButtons d-flex-row">
         <!-- PLAY BACK TO FRONT -->
         <div class="col-6">
           <i @click="reverseStudy(deck._id)" class="fab fa-rev"></i>
@@ -135,8 +135,11 @@
     /* align-items: flex-end; */
     justify-content: center;
     /* position: fixed; */
-    padding-top: .5rem;
-    bottom: 0px;
+    /* padding-top: .5rem; */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
   }
 
   .home-card2 {
