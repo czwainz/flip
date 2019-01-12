@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-center">
       <!-- BEGIN CAROUSEL -->
       <div id="carouselIndicators" class="row carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators mb-1">
+        <ol class="carousel-indicators">
           <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselIndicators" data-slide-to="1"></li>
           <li data-target="#carouselIndicators" data-slide-to="2"></li>
@@ -18,32 +18,35 @@
             <img src="../assets/flip-logo-bg-primary.png" class="d-block w-100 flip-carousel" alt="logo">
           </div>
           <div class="carousel-item">
-            <img src="../assets/flip-front.png" class="d-block w-100" alt="tap to flip" height="auto">
+            <h3 class="carouselText">Tap to Flip</h3>
           </div>
           <div class="carousel-item">
-            <img src="../assets/flip-back.png" class="d-block w-100" alt="tap to flip back" height="auto">
+            <img src="../assets/flip-back.png" class="d-block w-100 car-img-pad" alt="tap to flip back" height="auto">
           </div>
           <div class="carousel-item">
-            <img src="../assets/correct-front.png" class="d-block w-100" alt="choosing correct" height="auto">
+            <h3 class="carouselText"><br>Mark incorrect<br> or correct</h3>
           </div>
           <div class="carousel-item">
-            <img src="../assets/correct-back.png" class="d-block w-100" alt="choosing correct back" height="auto">
+            <img src="../assets/correct-correct-back.png" class="d-block w-100 car-img-pad" alt="choosing correct back"
+              height="auto">
           </div>
           <div class="carousel-item">
-            <img src="../assets/summary-front.png" class="d-block w-100" alt="summary front" height="auto">
+            <h3 class="carouselText">Summary View</h3>
           </div>
           <div class="carousel-item">
-            <img src="../assets/summary-back.png" class="d-block w-100" alt="summary back" height="auto">
+            <img src="../assets/summary-back.png" class="d-block w-100 car-img-pad" alt="summary back" height="auto">
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <div class="car-indicator">
+          <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       </div>
       <!-- END CAROUSEL -->
     </div>
@@ -99,6 +102,34 @@
 </script>
 
 <style scoped>
+  .carouselStuff {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carouselText {
+    font-family: 'Shrikhand', cursive;
+    color: whitesmoke;
+    padding-top: 120px;
+  }
+
+  .car-img-pad {
+    padding-top: 50px;
+  }
+
+  .car-indicator {
+    width: 100vw;
+  }
+
+  .text-div-width {
+    width: 100vw;
+  }
+
+  .carousel-inner {
+    height: 355px;
+  }
+
   .mainLogo {
     width: 80vw;
     height: auto;
@@ -123,8 +154,15 @@
     border-radius: 100%;
   }
 
+  /* 
+  @media only screen and (max-width: 500px) {
+    .carousel {
+      height: 25vh;
+    }
+  } */
+
   .carousel {
-    min-height: 361px;
+    height: 100%;
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -132,6 +170,7 @@
   @media only screen and (min-width: 500px) {
     .carousel {
       width: 500px;
+      height: 400px;
     }
   }
 
