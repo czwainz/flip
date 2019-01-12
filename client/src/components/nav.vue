@@ -28,6 +28,12 @@
                 aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">Home</router-link>
             </a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link">
+              <router-link :to="{name: 'about'}" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">About</router-link>
+            </a>
+          </li>
 
           <div v-if="isLoggedIn()">
             <li class=" nav-item-active">
