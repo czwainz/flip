@@ -1,6 +1,6 @@
 <template>
   <div class="decksPage row d-flex justify-content-center">
-    <div v-for="deck in visibleDecks" class="col-xs-5 col-sm-5 col-lg-3 d-flex justify-content-center">
+    <div v-for="deck in visibleDecks" class="col-5 col-md-3 col-lg-3 d-flex justify-content-center">
       <div class="card home-card2 my-2 shadow" :class="deck.color">
         <div @click="goToStudy(deck._id)" class="d-flex justify-content-center align-items-center card-body">
           <h6>{{deck.title}}</h6>
@@ -34,8 +34,8 @@
       }
     },
     props: ['decks'],
-    mounted(){
-     this.windowSize()
+    mounted() {
+      this.windowSize()
     },
     computed: {
       user() {
@@ -51,10 +51,14 @@
       }
     },
     methods: {
-      windowSize(){
-         if($(window).width() > 600){
-        this.pageSize= 12
-      }
+      windowSize() {
+        if ($(window).width() > 960) {
+          this.pageSize = 12
+        } else if ($(window).width() > 576) {
+          this.pageSize = 8;
+        } else {
+          this.pageSize = 6;
+        }
       },
       isLoggedIn() {
         return (this.user._id) ? true : false
