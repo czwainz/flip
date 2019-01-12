@@ -30,8 +30,11 @@
         </div>
       </form>
       <div class="col-12 justify-content-center mb-3">
-        <h5>
+        <h5 v-if="averageRating()">
           Average Rating {{averageRating()}}
+        </h5>
+        <h5 v-else>
+          Be the first to rate this deck!
         </h5>
       </div>
 
